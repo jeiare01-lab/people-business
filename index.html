@@ -1,0 +1,1582 @@
+<title>The People Business</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+--bg:#FBF7EF; --surface:#FFFFFF; --ink:#16282A; --muted:#58665F; --line:#E3DCCD; --sun:#E9A23B; --sun-tint:#FCEBCB;
+--accent:#0C7A72; --accent-ink:#FFFFFF; --tint:#E3F1EC; --loss:#BF4A22; --desk:#ECF0F8; --desk-line:#C5CFE6;
+--f-display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+--f-body:'Source Serif 4',Georgia,'Times New Roman',serif;
+--f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0F1A18; --surface:#16251F; --ink:#EAF1EC; --muted:#A3B5AC; --line:#2B3E39; --sun:#F2B65C; --sun-tint:#3A2E17;
+--accent:#4FC3B8; --accent-ink:#06201D; --tint:#1A2E2A; --loss:#FF8F68; --desk:#172033; --desk-line:#2C3B5C; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0F1A18; --surface:#16251F; --ink:#EAF1EC; --muted:#A3B5AC; --line:#2B3E39; --sun:#F2B65C; --sun-tint:#3A2E17;
+--accent:#4FC3B8; --accent-ink:#06201D; --tint:#1A2E2A; --loss:#FF8F68; --desk:#172033; --desk-line:#2C3B5C; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.62;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 4rem;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:40rem;margin:0 auto}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:.55rem max(16px,env(safe-area-inset-right,0px)) .45rem max(16px,env(safe-area-inset-left,0px))}
+.bar-in{max-width:40rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:800;font-size:.95rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.toggle{display:flex;align-items:center;gap:.5rem;font-family:var(--f-display);font-weight:500;font-size:.78rem;color:var(--muted);cursor:pointer;user-select:none}
+.toggle input{position:absolute;opacity:0;pointer-events:none}
+.sw{width:2.3rem;height:1.3rem;border-radius:1rem;background:var(--line);position:relative;transition:background .2s;flex:none}
+.sw::after{content:"";position:absolute;top:.15rem;left:.15rem;width:1rem;height:1rem;border-radius:50%;background:var(--surface);transition:transform .2s}
+.toggle input:checked + .sw{background:var(--accent)}
+.toggle input:checked + .sw::after{transform:translateX(1rem)}
+.toggle input:focus-visible + .sw{outline:3px solid var(--accent);outline-offset:2px}
+.prog{height:3px;background:var(--line);margin-top:.45rem}
+.prog i{display:block;height:100%;width:0;background:var(--accent)}
+.cover{padding:3.2rem 0 2.2rem;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,11vw,4.2rem);line-height:.98;letter-spacing:-.035em;margin:.7rem 0 1rem;text-wrap:balance}
+.sub{font-family:var(--f-display);font-weight:500;font-size:1.2rem;line-height:1.35;max-width:30rem;color:var(--ink)}
+.meta{margin-top:1.4rem;font-family:var(--f-mono);font-size:.75rem;color:var(--muted);display:flex;gap:.4rem 1.2rem;flex-wrap:wrap}
+.sum{margin-top:1.6rem;display:grid;gap:.6rem;font-family:var(--f-display);font-size:.95rem}
+.sum div{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem}
+.sum b{font-weight:700;color:var(--accent)}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(1.7rem,6.5vw,2.25rem);line-height:1.08;letter-spacing:-.025em;margin:0 0 1rem;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:700;font-size:1.2rem;letter-spacing:-.01em;margin:2rem 0 .5rem;text-wrap:balance}
+section{padding:2.6rem 0 1rem;scroll-margin-top:4.5rem}
+.part{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:1.6rem 0 .5rem}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.toc a,.toc div{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.7rem;align-items:baseline;padding:.7rem .85rem;background:var(--surface);
+border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-weight:500;font-size:1rem;line-height:1.3}
+.toc a:hover{border-color:var(--accent)}
+.toc .n{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.tag{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .4rem;border-radius:3px;white-space:nowrap}
+.live{background:var(--accent);color:var(--accent-ink)}
+.soon{background:var(--tint);color:var(--muted)}
+.toc .off{opacity:.78}
+p{margin:0 0 1.05rem}
+.lead{font-size:1.28rem;line-height:1.5;font-family:var(--f-display);font-weight:500;letter-spacing:-.005em}
+ul.pl,ol.pl{margin:0 0 1.2rem;padding-left:1.25rem}
+.pl li{margin:.35rem 0;padding-left:.2rem}
+.pl li::marker{color:var(--accent);font-family:var(--f-mono)}
+strong{font-weight:600}
+.pull{font-family:var(--f-display);font-weight:700;font-size:1.45rem;line-height:1.2;letter-spacing:-.02em;border-top:3px solid var(--ink);padding-top:.8rem;margin:2rem 0;text-wrap:balance}
+.pull em{font-style:normal;color:var(--loss)}
+.three{display:grid;gap:.6rem;margin:1rem 0 1.4rem}
+.three div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.8rem .95rem}
+.three b{font-family:var(--f-display);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.15rem}
+.three span{font-size:.98rem;line-height:1.5;display:block}
+.tr{width:100%;border-collapse:collapse;font-size:.95rem;font-family:var(--f-display);margin:.5rem 0 1.4rem}
+.tr th{font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.35rem .5rem;border-bottom:2px solid var(--ink)}
+.tr td{padding:.55rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+.tr td:first-child{font-weight:700}
+.desk{background:var(--desk);border:1px solid var(--desk-line);border-radius:6px;padding:.9rem 1rem 1rem;margin:1.5rem 0;font-size:.97rem;line-height:1.55}
+.desk>b{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.desk p:last-child,.desk ul:last-child{margin-bottom:0}
+.desk ul{margin:.3rem 0 0;padding-left:1.1rem}
+body.owner .desk{display:none}
+.invoice{background:var(--surface);border:1px solid var(--ink);border-radius:4px;margin:1.4rem 0 2rem;position:relative}
+.inv-h{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.8rem 1rem;border-bottom:2px solid var(--ink);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}
+.inv-h b{font-weight:600}
+.inv-b{padding:1rem}
+fieldset{border:0;border-top:1px dashed var(--line);margin:0;padding:.9rem 0 .3rem;min-width:0}
+fieldset:first-of-type{border-top:0;padding-top:.2rem}
+legend{font-family:var(--f-display);font-weight:700;font-size:.95rem;padding:0 .4rem 0 0;float:left;width:100%;margin-bottom:.5rem}
+.fg{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem .8rem}
+.fld{display:flex;flex-direction:column;gap:.2rem;min-width:0}
+.fld label{font-family:var(--f-display);font-size:.78rem;color:var(--muted);line-height:1.2}
+.fld .w{display:flex;align-items:center;border:1px solid var(--line);border-radius:4px;background:var(--bg);padding:0 .5rem;min-width:0}
+.fld .w:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px var(--tint)}
+.fld .u{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);flex:none;padding-right:.25rem}
+.fld .u.r{padding:0 0 0 .25rem}
+.fld input{font-family:var(--f-mono);font-size:1rem;font-variant-numeric:tabular-nums;color:var(--ink);background:transparent;border:0;outline:0;width:100%;min-width:0;padding:.5rem 0}
+.rst{margin:.6rem 0 0;font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.rst button{font:inherit;color:var(--accent);background:none;border:0;text-decoration:underline;padding:0;cursor:pointer}
+.lines{border-top:2px solid var(--ink);margin-top:1rem}
+.lines .row{display:grid;grid-template-columns:1fr auto;gap:.2rem .8rem;padding:.55rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.lines .row span{font-family:var(--f-display);font-weight:500;font-size:.95rem}
+.lines .row small{grid-column:1;font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+.lines .row b{font-family:var(--f-mono);font-weight:500;font-size:.95rem;font-variant-numeric:tabular-nums;grid-row:1;grid-column:2;text-align:right}
+.bars{height:5px;background:var(--tint);border-radius:3px;grid-column:1/-1;overflow:hidden}
+.bars i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+@media (prefers-reduced-motion:reduce){.bars i{transition:none}}
+.stick{position:sticky;bottom:0;z-index:5;background:var(--ink);color:var(--bg);display:grid;grid-template-columns:1fr auto;gap:.1rem 1rem;align-items:end;
+padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+.stick .k{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.stick .v{font-family:var(--f-display);font-weight:800;font-size:1.7rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.05}
+.stick .p{font-family:var(--f-display);font-weight:800;font-size:1.7rem;color:var(--bg);font-variant-numeric:tabular-nums;text-align:right;line-height:1.05;text-decoration:underline;text-decoration-color:var(--loss);text-decoration-thickness:3px;text-underline-offset:4px}
+.scale{display:grid;gap:.6rem;margin:0 0 1.4rem}
+.scale div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.75rem .95rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.scale span{font-family:var(--f-display);font-size:.92rem;color:var(--muted)}
+.scale b{font-family:var(--f-mono);font-weight:600;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.scale .hot b{color:var(--loss)}
+.tool{border:2px solid var(--ink);border-radius:6px;background:var(--surface);margin:2rem 0}
+.tool>h3{margin:0;padding:.8rem 1rem;background:var(--ink);color:var(--bg);font-size:1rem;letter-spacing:.02em}
+.tool .t{padding:.9rem 1rem;border-top:1px solid var(--line)}
+.tool .t:first-of-type{border-top:0}
+.tool .t b.l{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.tool ol{margin:.3rem 0 0;padding-left:1.2rem;font-size:.97rem}
+.tool p{margin:0;font-size:1rem}
+.end{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.74rem;color:var(--muted);line-height:1.6}
+.hint{font-size:.88rem;line-height:1.45;color:var(--muted);margin:0 0 .7rem;clear:both}
+.fg3{clear:both;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem .6rem}
+.xres{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.7rem;padding-top:.5rem;border-top:1px solid var(--line);font-family:var(--f-display);font-size:.88rem;color:var(--muted)}
+.xres b{font-family:var(--f-mono);font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.xres b.hot{color:var(--loss)}
+.stick .v.sm,.stick .p.sm{font-size:1.3rem}
+.scale.res{margin:1rem 0 0}
+@media (max-width:480px){.fg3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:360px){.fg,.fg3{grid-template-columns:1fr}}
+.prog i{background:linear-gradient(90deg,var(--accent),var(--sun))}
+.eyebrow,.part{color:var(--accent)}
+.pull{border-top-color:var(--sun)}
+.toc a,.toc div,.three div,.scale div,.desk,.tool,.tr{border-radius:12px}
+.toc a,.three div,.scale div,.invoice,.tool{box-shadow:0 1px 2px rgba(22,40,42,.05),0 8px 20px -10px rgba(22,40,42,.16)}
+.toc a{transition:transform .15s,border-color .15s}
+.toc a:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:reduce){.toc a{transition:none}.toc a:hover{transform:none}}
+.invoice{border-radius:14px;border-color:var(--ink)}
+.inv-h{border-radius:12px 12px 0 0}
+.stick{border-radius:0 0 12px 12px}
+.tool>h3{border-radius:10px 10px 0 0}
+.fld .w{border-radius:8px}
+.lead{border-left:4px solid var(--sun);padding-left:.9rem}
+.nextup{margin:2.2rem 0 0;padding:1.1rem 1.15rem;border-radius:14px;background:var(--sun-tint);border:1px solid var(--sun);font-family:var(--f-display)}
+.nextup .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nextup p{margin:.3rem 0 .6rem;font-weight:700;font-size:1.15rem;line-height:1.25;letter-spacing:-.01em}
+.nextup a{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:700;font-size:.95rem;padding:.6rem 1rem;border-radius:999px}
+.nextup .dots{display:flex;gap:.25rem;margin-top:.8rem}
+.nextup .dots i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.nextup .dots i.on{background:var(--accent)}
+.fcover,.bcover{background:#0E1A17;color:#EAF2EF;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
+.fcover{min-height:100svh;display:flex;flex-direction:column}
+.fc-in,.bc-in{max-width:40rem;width:100%;margin:0 auto;display:flex;flex-direction:column;flex:1;padding:max(2.2rem,calc(env(safe-area-inset-top,0px) + 1.4rem)) 0 2rem}
+.fc-top{display:flex;justify-content:space-between;gap:1rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#8FB3AA}
+.fc-gap{flex:1;min-height:.4rem}
+.fc-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-top:1.2rem}
+.fc-by span{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#8FB3AA}
+.fc-by b{display:block;font-family:var(--f-display);font-size:1.25rem;letter-spacing:-.01em;margin:.2rem 0 .1rem}
+.fc-by em{font-style:normal;color:#CFE0DA;font-size:.95rem}
+.btn{display:inline-block;background:#E9A23B;color:#1A1405;text-decoration:none;font-family:var(--f-display);font-weight:800;font-size:1rem;padding:.8rem 1.2rem;border-radius:999px;white-space:nowrap}
+.btn:focus-visible{outline-color:#fff}
+.bcover{margin-top:3rem;min-height:100svh;display:flex;flex-direction:column}
+.bc-in{justify-content:center;gap:1.4rem}
+.bcover h2{color:#EAF2EF;font-size:clamp(2rem,9vw,3.2rem);line-height:1.02;margin:0}
+.bcover h2 em{font-style:normal;color:#F2B65C}
+.bcover p{color:#CFE0DA;margin:0;font-size:1.1rem}
+.bc-steps{display:grid;gap:.6rem;margin:.4rem 0}
+.bc-steps div{display:grid;grid-template-columns:2.2rem 1fr;gap:.7rem;align-items:baseline;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:.8rem .95rem;font-family:var(--f-display);font-weight:500;line-height:1.35}
+.bc-steps b{font-family:var(--f-mono);color:#F2B65C}
+.bc-q{font-family:var(--f-display);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;border-top:3px solid #E9A23B;padding-top:.9rem}
+.bc-by{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#8FB3AA;line-height:1.7}
+.fcover{position:relative;overflow:hidden;background:#FBF7EF;color:#16282A}
+.fa-top{display:flex;justify-content:space-between;gap:1rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#58665F}
+.fcover h1{margin:1.6rem 0 0;color:#16282A;font-size:clamp(3.4rem,15.9vw,4.6rem);line-height:.95;letter-spacing:-.04em}
+.fcover h1 span.hl{background:linear-gradient(transparent 58%,#F2B65C 58%,#F2B65C 92%,transparent 92%);padding-right:.4rem}
+.fa-tag{margin:1rem 0 0;font-family:var(--f-display);font-weight:500;font-size:1.2rem;line-height:1.3;max-width:19rem}
+.fa-tag b{display:block;margin-top:.35rem;color:#0C7A72;font-weight:800}
+.fa-gap{flex:1;min-height:1.2rem}
+.fa-stage{position:relative;margin:0 .25rem}
+.fa-inv{background:#fff;border:1px solid #16282A;border-radius:12px;padding:.9rem 1rem;box-shadow:6px 6px 0 #16282A;font-family:var(--f-display);color:#16282A}
+.fa-inv .h{display:flex;justify-content:space-between;gap:.6rem;padding-bottom:.5rem;border-bottom:2px solid #16282A;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.fa-inv .r{display:flex;justify-content:space-between;gap:.6rem;padding:.5rem 0;border-bottom:1px solid #E3DCCD;font-size:.88rem;font-weight:500}
+.fa-inv .r i{font-style:normal;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.fa-inv .r.m{font-family:var(--f-mono);font-size:.75rem;color:#58665F}
+.fa-inv .t{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;padding-top:.6rem}
+.fa-inv .t span{font-weight:800;font-size:.95rem}
+.fa-inv .t b{font-weight:800;font-size:1.8rem;letter-spacing:-.02em;color:#BF4A22;font-variant-numeric:tabular-nums}
+.fa-stamp{position:absolute;top:2.7rem;left:52%;width:4.2rem;height:4.2rem;border-radius:50%;background:#BF4A22;color:#FBF7EF;border:3px double #FBF7EF;display:flex;align-items:center;justify-content:center;text-align:center;
+font-family:var(--f-mono);font-weight:600;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.25;transform:rotate(-10deg);box-shadow:0 4px 10px -3px rgba(0,0,0,.4)}
+@media (prefers-reduced-motion:no-preference){.fa-stamp{animation:thud .6s .4s both cubic-bezier(.2,1.4,.4,1)}
+@keyframes thud{from{opacity:0;transform:rotate(-10deg) scale(1.8)}to{opacity:1;transform:rotate(-10deg) scale(1)}}}
+.fa-foot{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin-top:1.6rem}
+.fa-by b{display:block;font-family:var(--f-display);font-weight:800;font-size:1.1rem;letter-spacing:-.01em}
+.fa-by em{font-style:normal;font-size:.9rem;color:#58665F}
+.fa-btn{display:inline-block;background:#16282A;color:#FBF7EF;text-decoration:none;font-family:var(--f-display);font-weight:800;font-size:.95rem;padding:.75rem 1.2rem;border-radius:999px;white-space:nowrap}
+.fa-btn:focus-visible{outline:3px solid #0C7A72;outline-offset:3px}
+.author{display:flex;gap:1rem;align-items:center;margin:1.2rem 0 1.4rem;padding:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(22,40,42,.05),0 8px 20px -10px rgba(22,40,42,.16)}
+.author .ph{flex:none;width:5.2rem;height:5.2rem;border-radius:50%;overflow:hidden;background:var(--tint);border:3px solid var(--sun);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:1.6rem;color:var(--accent)}
+.author .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.author b{display:block;font-family:var(--f-display);font-weight:800;font-size:1.2rem;letter-spacing:-.01em;line-height:1.15}
+.author span{display:block;font-family:var(--f-display);font-size:.92rem;color:var(--muted);line-height:1.35;margin-top:.15rem}
+.bc-who{display:flex;align-items:center;gap:.9rem}
+.bc-who img{flex:none;width:4.5rem;height:4.5rem;border-radius:50%;object-fit:cover;border:3px solid #E9A23B;display:block}
+</style>
+<section class="fcover" id="cover" aria-label="Front cover"><div class="fc-in">
+<div class="fa-top"><span>E-book for owners and HR</span><span>Ed. 0.2</span></div>
+<h1>The<br>People<br><span class="hl">Business</span></h1>
+<p class="fa-tag">Run the workforce like you run the company. <b>No HR background needed.</b></p>
+<div class="fa-gap"></div>
+<div class="fa-stage" role="img" aria-label="Invoice number 0001, billed to nobody. One resignation: 499,250 pesos.">
+<div class="fa-inv">
+<div class="h"><b>Invoice No. 0001</b><span>Bill to: nobody</span></div>
+<div class="r"><span>Net vacancy loss</span><i>177,500</i></div>
+<div class="r"><span>Replacement</span><i>87,750</i></div>
+<div class="r m"><span>+ 3 more lines</span><i>234,000</i></div>
+<div class="t"><span>One resignation</span><b>₱499,250</b></div>
+</div>
+<div class="fa-stamp" aria-hidden="true">Paid by<br>no one</div>
+</div>
+<div class="fa-foot">
+<div class="fa-by"><b>James Villalon II</b><em>HR Strategic Partner</em></div>
+<a class="fa-btn" href="#start">Start reading</a>
+</div>
+</div></section>
+<div class="bar"><div class="bar-in">
+<a class="brand" href="#top">The People Business</a>
+<label class="toggle"><input type="checkbox" id="deskToggle" checked><span class="sw"></span>Practitioner's desk</label>
+</div><div class="prog" aria-hidden="true"><i id="prog"></i></div></div>
+<div class="wrap" id="top">
+<header class="cover" id="start">
+<div class="eyebrow">E-book · Complete draft, edition 0.2 · 31 Oct 2026</div>
+<h1>The People Business</h1>
+<p class="sub">Run the workforce like you run the company. For leaders of Philippine conglomerates, and the HR practitioners who serve them.</p>
+<div class="sum">
+<div><b>Owners</b><span>Read the argument. Do the math. Skip the HR jargon.</span></div>
+<div><b>HR</b><span>Keep the practitioner's desk notes: the metric behind the number, and how to take it to a CFO.</span></div>
+</div>
+<div class="meta"><span>Introduction + 12 chapters</span><span>About 3 hours</span><span>15 working calculators</span></div>
+</header>
+<section id="preface">
+<div class="eyebrow">Preface</div>
+<h2>Thank you</h2>
+<p class="lead">Who would have thought an HR practitioner would end up writing a book that treats payroll as a P&amp;L?</p>
+<p>Not me. Not when I started. HR taught me people. It took two (2) leaders to teach me what people cost, what they return, and what a company loses when nobody is counting.</p>
+<h3>To the Chief Human Resources Officer</h3>
+<p>You gave me the work before I felt ready for it. Every assignment came with room to get it wrong and a standard that did not move. That is how a practitioner gets sharpened. Not by being told, but by being trusted with something that could fail, and then being asked what I learned.</p>
+<p>This book is full of what I learned that way. The mistakes in it are mine. The nerve to try again is yours.</p>
+<h3>To the Business Integrator</h3>
+<p>You let me see the numbers beyond HR. Before that, I knew headcount, turnover and survey scores. You showed me margin, cash, and what an empty seat costs a project by the week. And you never treated the people question as the smaller one.</p>
+<p>Chapter 1 is what happens when an HR practitioner learns to price a resignation in pesos. The rest of the book follows from that one habit.</p>
+<h3>To both of you</h3>
+<p>The argument in these pages is yours as much as mine. An HR practitioner who can read the numbers beyond HR is not a better administrator. That practitioner is a better partner. If this book helps one leader see their people the way you taught me to see them, it will have earned its place.</p>
+<div class="end" style="margin-top:1.6rem;padding-top:.8rem">James Villalon II · HR Strategic Partner · October 2026</div>
+</section>
+<section id="contents">
+<h2>Contents</h2>
+<div class="part">Front matter</div>
+<ul class="toc">
+<li><a href="#preface"><span class="n">&mdash;</span><span>Preface</span><span class="tag live">Read</span></a></li>
+<li><a href="#intro"><span class="n">&mdash;</span><span>Introduction: You Already Run a People Business</span><span class="tag live">Read</span></a></li>
+<li><a href="#refs"><span class="n">&mdash;</span><span>References and sources</span><span class="tag live">Read</span></a></li>
+<li><a href="#about"><span class="n">&mdash;</span><span>About the author, rights and use</span><span class="tag live">Read</span></a></li>
+</ul>
+<div class="part">Part 1 · Protect the downside</div>
+<ul class="toc">
+<li><a href="#ch1"><span class="n">01</span><span>The Resignation Invoice</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch2"><span class="n">02</span><span>Labor Cost Leakage</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch3"><span class="n">03</span><span>Compliance Is Exposure</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch4"><span class="n">04</span><span>Key People and the Ranks Dynamic</span><span class="tag live">Read</span></a></li>
+</ul>
+<div class="part">Part 2 · Build the engine</div>
+<ul class="toc">
+<li><a href="#ch5"><span class="n">05</span><span>Seats and Hires</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch6"><span class="n">06</span><span>Onboarding and Pay</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch7"><span class="n">07</span><span>Performance Per Peso</span><span class="tag live">Read</span></a></li>
+</ul>
+<div class="part">Part 3 · Grow the asset</div>
+<ul class="toc">
+<li><a href="#ch8"><span class="n">08</span><span>Capability and Bench</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch9"><span class="n">09</span><span>Succession as Insurance</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch10"><span class="n">10</span><span>Culture and the Conglomerate Question</span><span class="tag live">Read</span></a></li>
+</ul>
+<div class="part">Part 4 · Run it as a business</div>
+<ul class="toc">
+<li><a href="#ch11"><span class="n">11</span><span>The People P&amp;L and the Quarterly Rhythm</span><span class="tag live">Read</span></a></li>
+<li><a href="#ch12"><span class="n">12</span><span>Automate, Rebuild the Function, First 90 Days</span><span class="tag live">Read</span></a></li>
+</ul>
+</section>
+<section id="intro">
+<div class="eyebrow">Introduction</div>
+<h2>You already run a people business</h2>
+<p class="lead">Your company spends more on people than it admits, and reports on them less than it reports on diesel.</p>
+<p>Open your SBU's P&amp;L. Find the payroll line. Now find everything that rides behind it: overtime, the 13th month accrual, SSS, PhilHealth and Pag-IBIG remittances, agency fees, recruitment costs, training, separation pay, legal fees from the last labor case. Add them. That total is your people spend.</p>
+<p>Now answer one question: <strong>who owns it?</strong></p>
+<p>Not who processes it. Who owns it. Who is accountable for what it returns, who explains the variance, who answers when it leaks.</p>
+<p>In most conglomerates, nobody does. Finance pays it. HR administers it. Operations consumes it. The CEO feels it only when something breaks: a key engineer resigns mid-project, a regularization case reaches the NLRC, a successor turns out to be unready the week the incumbent retires. By then the bill is large and the cause is old.</p>
+<p class="pull">You already run a people business. You are running it <em>without a P&amp;L.</em></p>
+<h3>Three things people are at once</h3>
+<div class="three">
+<div><b>Cost</b><span>Your largest controllable line. Every peso of payroll is a commitment made months ahead of the revenue meant to cover it.</span></div>
+<div><b>Asset</b><span>The only one that appreciates when you invest in it and walks out the gate when you do not. No other asset on your books can resign.</span></div>
+<div><b>Risk</b><span>Compliance exposure, key-person dependency, labor disputes, succession gaps. None shows up as a line item until it becomes a loss.</span></div>
+</div>
+<p>A good owner manages all three at once. Most leaders manage the cost and delegate it downward as an administrative chore.</p>
+<h3>What changes when you treat it as a business</h3>
+<p>The vocabulary of HR was built for specialists. This book drops it where it can and translates it where it cannot.</p>
+<table class="tr">
+<tr><th>HR says</th><th>This book says</th></tr>
+<tr><td>Turnover</td><td>The resignation invoice</td></tr>
+<tr><td>Hiring</td><td>Capital allocation, with a payback period</td></tr>
+<tr><td>Onboarding</td><td>Time-to-productivity, paid in full</td></tr>
+<tr><td>Engagement</td><td>Discretionary effort you pay for and do not get</td></tr>
+<tr><td>Succession</td><td>Continuity insurance: premium, coverage, claim</td></tr>
+<tr><td>The HR function</td><td>A business unit that earns its seat or loses it</td></tr>
+</table>
+<p>The move is simple and uncomfortable. Stop asking whether your people practices are fair, modern or compliant. They should be, but that is the entry fee. Start asking what they <strong>return.</strong></p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>If you are in HR, this book is the brief your executives wish you would give them. Every business number here maps to a metric you already track or can pull from the HRIS. Where a chapter uses a plain business term, the desk note names the HR term behind it, so you can bridge both audiences in one meeting.</p>
+</div>
+<h3>The four moves</h3>
+<ol class="pl">
+<li><strong>Protect the downside.</strong> Stop the loss before you grow anything.</li>
+<li><strong>Build the engine.</strong> Seats that earn, hires that pay back, pay that holds talent.</li>
+<li><strong>Grow the asset.</strong> Capability, bench strength, succession, culture as operating discipline.</li>
+<li><strong>Run it as a business.</strong> A people P&amp;L, a quarterly rhythm, an HR function that earns its seat.</li>
+</ol>
+<h3>What this book is not</h3>
+<p>It is not a legal reference. Philippine labor law changes, and your counsel decides what applies to you. It is not a case against compassion either. The companies that price their people honestly are the ones that can afford to treat them well.</p>
+<p>And it is not for passive reading. Every chapter ends with one page: <strong>a number to compute, a decision to make, a conversation to have this week.</strong> Skip the page and you have read an essay. Do the page and you have changed a business.</p>
+<h3>Before you turn the page</h3>
+<p>Write down what you believe one resignation costs your company. One figure, in pesos, for a mid-level employee you would regret losing. Keep it. Chapter 1 will tell you how far off you are.</p>
+</section>
+<section id="ch1">
+<div class="eyebrow">Chapter 1 · Part 1, Protect the downside</div>
+<h2>The Resignation Invoice</h2>
+<p class="lead">One resignation costs about 85% of that employee's annual cash pay. Nobody has ever sent you the bill.</p>
+<h3>A Tuesday, a letter, a silence</h3>
+<p>A project engineer hands in a resignation letter on a Tuesday. He is good. He holds the site schedule in his head, the subcontractors answer his calls, and the client asks for him by name. Thirty days later he is gone.</p>
+<p>What happens next is a composite, drawn from patterns that repeat across project-based businesses. The seat stays empty for ten (10) weeks. Two teammates absorb his work and slip their own. The replacement, hired through an agency, needs three (3) months to reach half speed. The site loses a week.</p>
+<p>Ask anyone what this cost and the answer is a shrug, or a number that stops at the agency fee. The shrug is the problem. The invoice exists. It is split across three (3) departments and paid by none.</p>
+<h3>Three bills, three blind spots</h3>
+<ul class="pl">
+<li><strong>Finance</strong> sees the agency fee and the final pay. It does not see the lost output.</li>
+<li><strong>Operations</strong> feels the vacancy and the delay. It does not see the recruitment cost.</li>
+<li><strong>HR</strong> counts the exit in a turnover percentage. It does not see the peso value of any of it.</li>
+</ul>
+<p>Each function holds one piece. No one adds them. A cost nobody discusses is a cost nobody manages.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>The business term is the resignation invoice. The HR term is <strong>cost of turnover</strong>, usually quoted as a multiple of annual pay. Published multiples vary widely by level and industry, so do not borrow one. Compute yours from your own vacancy days, agency spend and ramp-up data. Your CFO will trust a figure built from their own margin, not a benchmark from a journal.</p>
+<ul>
+<li>Turnover rate = separations ÷ average headcount. Track it, then split it into regretted and non-regretted.</li>
+<li>Pull from the HRIS: resignation dates, requisition open and close dates, agency invoices, start dates.</li>
+</ul>
+</div>
+<h3>Build the invoice</h3>
+<p>The formula is plain: net vacancy loss, plus replacement, plus ramp-up, plus team drag, plus delay, plus exit processing, plus the time and training you spend on the way. The calculator below runs it live. The starting figures are for the engineer above and are <strong>illustrative.</strong> Replace every one with yours.</p>
+<div class="invoice" id="calc">
+<div class="inv-h"><span><b>Invoice No. 0001</b></span><span>Bill to: nobody</span></div>
+<div class="inv-b">
+<fieldset><legend>The seat</legend><div class="fg">
+<div class="fld"><label for="basic">Basic pay per month</label><div class="w"><span class="u">₱</span><input id="basic" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="months">Months paid a year (with 13th)</label><div class="w"><input id="months" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="loaded">Loaded monthly cost of the seat</label><div class="w"><span class="u">₱</span><input id="loaded" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="margin">Margin the seat earns or protects a year</label><div class="w"><span class="u">₱</span><input id="margin" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Vacancy and replacement</legend><div class="fg">
+<div class="fld"><label for="vac">Months the seat stays empty</label><div class="w"><input id="vac" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="fee">Agency fee, share of annual cash pay</label><div class="w"><input id="fee" type="number" inputmode="decimal" min="0" step="any"><span class="u r">%</span></div></div>
+<div class="fld"><label for="phrs">Panel and manager hours</label><div class="w"><input id="phrs" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="prate">Loaded cost per panel hour</label><div class="w"><span class="u">₱</span><input id="prate" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="onb">Onboarding and training, direct</label><div class="w"><span class="u">₱</span><input id="onb" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="exit">Exit processing and final pay admin</label><div class="w"><span class="u">₱</span><input id="exit" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Ramp-up and team</legend><div class="fg">
+<div class="fld"><label for="ramp">Months to reach full speed</label><div class="w"><input id="ramp" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="unp">Average share of output missing</label><div class="w"><input id="unp" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+<div class="fld"><label for="team">Teammates who cover</label><div class="w"><input id="team" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="thrs">Hours each spends covering</label><div class="w"><input id="thrs" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="trate">Loaded cost per teammate hour</label><div class="w"><span class="u">₱</span><input id="trate" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="delay">Delay cost, such as site overhead</label><div class="w"><span class="u">₱</span><input id="delay" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Scale it</legend><div class="fg">
+<div class="fld"><label for="exits">Regretted exits a year, this role family</label><div class="w"><input id="exits" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="nm">Net margin of the business</label><div class="w"><input id="nm" type="number" inputmode="decimal" min="0.1" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<p class="rst">Example figures, not yours. <button type="button" id="reset">Reset to the example</button></p>
+<div class="lines" id="lines"></div>
+</div>
+<div class="stick" aria-live="polite">
+<div><div class="k">Cost of one exit</div><div class="v" id="tot">₱0</div></div>
+<div><div class="k" style="text-align:right">of annual pay</div><div class="p" id="pct">0%</div></div>
+</div>
+</div>
+<p>With the example figures, one exit costs ₱499,250 against ₱585,000 of annual cash pay: about 85%. That is the floor. The invoice leaves out client trust, the knowledge that walked out, the chance he joins a competitor, and the signal sent to the three (3) colleagues who watched him go and updated their own resumes.</p>
+<h3>From one exit to a line on the P&amp;L</h3>
+<div class="scale">
+<div class="hot"><span>Annual bill for this role family</span><b id="annual">₱0</b></div>
+<div><span>Revenue needed to earn it back at your net margin</span><b id="rev">₱0</b></div>
+</div>
+<p>With the example, one (1) SBU losing twenty (20) people a year pays nearly ₱10 million. At a 10% net margin, earning that back takes about ₱100 million in new revenue. The SBU sells that much work every year to refill seats it already paid to fill.</p>
+<p class="pull">Not "our turnover is 14%." Say: <em>"We spend ₱10 million a year replacing people we wanted to keep."</em></p>
+<h3>Where I will push back on you</h3>
+<p>The wrong lesson is "drive turnover to zero." Zero turnover means you cannot remove poor performers and you are not refreshing skills. Some exits are the best news of the year.</p>
+<p>The right lesson is narrower. Split exits into <strong>regretted</strong> and <strong>non-regretted.</strong> Price the regretted ones in critical seats. That is the number that deserves an owner, a target, and a place in your quarterly review.</p>
+<p>And resist the comfort of the exit interview. People give you the polite reason. The real reason is usually a manager, a pay gap against the market, or a career path they could not see. Those are three (3) different fixes. Parts 2 and 3 take each in turn.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Before you present this to an exec team, expect three challenges and prepare for each.</p>
+<ul>
+<li><strong>"Where did the margin figure come from?"</strong> Get it from Finance, in writing, before the meeting.</li>
+<li><strong>"Some of these people were leaving anyway."</strong> Agree, and show only the regretted exits.</li>
+<li><strong>"Vacancy saves us salary."</strong> It does, and the calculator already subtracts it.</li>
+</ul>
+</div>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>The cost of one regretted exit in your SBU.</p>
+<ol>
+<li>Pick one (1) role family where losing someone hurts: engineers, site supervisors, estimators, sales, finance.</li>
+<li>Take annual cash pay and the loaded monthly cost for a typical seat.</li>
+<li>Estimate the margin or output that seat protects per year. Ask Finance, then argue with the answer.</li>
+<li>Count real vacancy time for the last three (3) hires in that family.</li>
+<li>Enter your figures in the calculator. Strike any line you cannot defend.</li>
+<li>Multiply by the regretted exits last year.</li>
+</ol></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which role family gets protected first? Name one (1) family and one (1) owner by Friday.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Sit with the manager of your last regretted leaver. Ask one question and listen without defending anyone: <em>"When did you first know he might leave, and what did we do?"</em></p></div>
+</div>
+<p>Then go back to the figure you wrote down before this chapter. Mark the gap. The gap is your first Rock.</p>
+</section>
+<section id="ch2">
+<div class="eyebrow">Chapter 2 · Part 1, Protect the downside</div>
+<h2>Labor Cost Leakage</h2>
+<p class="lead">Payroll pays for work. It also pays for the gaps around the work, and nobody audits the gaps.</p>
+<h3>A variance nobody could explain</h3>
+<p>A general manager opens the monthly payroll and sees it running 6% over budget. She asks three (3) people why. Finance says overtime. Operations says the project required it. HR says headcount is within plan.</p>
+<p>All three are right, and the money is still gone. Each function explained its own column. Nobody asked how much of the overtime was a purchase and how much was a symptom. This chapter gives you that split.</p>
+<h3>Five doors the money leaves through</h3>
+<ol class="pl">
+<li><strong>Overtime nobody planned.</strong> Overtime bought to hit a client deadline is spend. Overtime caused by poor scheduling, late materials or one understaffed shift is a leak.</li>
+<li><strong>Absence nobody follows up.</strong> Every unscheduled absence is a paid day with no output, multiplied by headcount.</li>
+<li><strong>Idle and rework time.</strong> Paid hours spent waiting for materials, instructions or approvals, or redoing work. The ranks pay for management's gaps, and it lands in payroll.</li>
+<li><strong>Payroll errors that never come back.</strong> Duplicate allowances, overpayments, separated employees still paid. Small each month, permanent in total.</li>
+<li><strong>Heads nobody approved.</strong> Positions filled above the approved manning plan, or kept after the work ended.</li>
+</ol>
+<div class="desk"><b>Practitioner's desk</b>
+<p>These map to numbers you can pull without a new system.</p>
+<ul>
+<li>Overtime ratio = overtime hours ÷ regular hours, by department. Source: timekeeping and the payroll register.</li>
+<li>Absenteeism rate = unscheduled absence days ÷ scheduled workdays. Source: DTR and leave records.</li>
+<li>Headcount against the approved manning plan, by position. Source: HRIS and the approved manning plan.</li>
+<li>Payroll variance lines Finance has stopped explaining. Ask for the last six months.</li>
+</ul>
+</div>
+<h3>Run the leak audit</h3>
+<p>The calculator below prices each door. The starting figures describe a 400-person operation and are <strong>illustrative.</strong> Use your own.</p>
+<div class="invoice" id="leak">
+<div class="inv-h"><span><b>Leak audit No. 0001</b></span><span>Period: 12 months</span></div>
+<div class="inv-b">
+<fieldset><legend>Your payroll</legend><div class="fg">
+<div class="fld"><label for="l_head">Headcount</label><div class="w"><input id="l_head" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="l_loaded">Loaded monthly cost per head</label><div class="w"><span class="u">₱</span><input id="l_loaded" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Overtime</legend><div class="fg">
+<div class="fld"><label for="l_ot">Overtime spend per month</label><div class="w"><span class="u">₱</span><input id="l_ot" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="l_otav">Share that was avoidable</label><div class="w"><input id="l_otav" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<fieldset><legend>Absence and idle time</legend><div class="fg">
+<div class="fld"><label for="l_abs">Unscheduled absence days per head a year</label><div class="w"><input id="l_abs" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="l_abt">Target days per head a year</label><div class="w"><input id="l_abt" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="l_idle">Paid time lost to idle and rework</label><div class="w"><input id="l_idle" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<fieldset><legend>Errors and off-plan heads</legend><div class="fg">
+<div class="fld"><label for="l_err">Payroll errors not recovered, per month</label><div class="w"><span class="u">₱</span><input id="l_err" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="l_off">Heads above the approved plan</label><div class="w"><input id="l_off" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Scale it</legend><div class="fg">
+<div class="fld"><label for="l_rec">Share you can win back in 12 months</label><div class="w"><input id="l_rec" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+<div class="fld"><label for="l_nm">Net margin of the business</label><div class="w"><input id="l_nm" type="number" inputmode="decimal" min="0.1" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<p class="rst">Example figures, not yours. <button type="button" id="l_reset">Reset to the example</button></p>
+<div class="lines" id="l_lines"></div>
+</div>
+<div class="stick" aria-live="polite">
+<div><div class="k">Leakage in 12 months</div><div class="v" id="l_tot">₱0</div></div>
+<div><div class="k" style="text-align:right">of payroll</div><div class="p" id="l_pct">0%</div></div>
+</div>
+</div>
+<p>With the example, the five doors cost about ₱12.7 million a year: 8.3% of a ₱153.6 million payroll. That is more than the whole of Chapter 1's annual resignation bill for one role family, and no resignation letter announced it.</p>
+<div class="scale">
+<div class="hot"><span>Recoverable in 12 months</span><b id="l_recv">₱0</b></div>
+<div><span>Revenue to earn the same amount at your net margin</span><b id="l_rev">₱0</b></div>
+</div>
+<h3>Where I will push back on you</h3>
+<p>Not all of this is recoverable, and the book will not pretend otherwise. Overtime during a real crunch is a purchase. Some absence is illness, and you do not want people at work sick. Some idle time is the price of a project that depends on weather and delivery trucks.</p>
+<p>Apply three (3) tests to every line before you call it a leak: <strong>Was it planned? Was it approved? Did it buy output?</strong> A yes to all three is spend. A no to any is leakage. Set your recoverable share from those tests, not from hope.</p>
+<p>And do not start with the ranks. Most leakage is created upstream, in scheduling, purchasing and approvals. If the first leak you plug is a supervisor's overtime and the second is a delayed material order, you have found the real owner of the first.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Agree the recoverable share with Finance before you present. A CFO who sets the 40% with you will defend it in the room. One who first hears it from the screen will challenge every line.</p>
+</div>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Leakage as a percentage of payroll, for one SBU.</p>
+<ol>
+<li>Take twelve (12) months of the payroll register and the manning plan.</li>
+<li>Mark each overtime line planned or unplanned, approved or not.</li>
+<li>Pull absence days from the DTR and set a target with the operations head.</li>
+<li>Ask supervisors to estimate idle and rework hours for one typical week. Multiply, then halve it to stay conservative.</li>
+<li>List payroll errors found this year and what came back.</li>
+<li>Count heads above plan. Enter everything in the calculator.</li>
+</ol></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which one (1) leak gets plugged in the next thirty (30) days? Name the leak and its owner. The owner is rarely HR.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Sit with Finance and payroll. Ask: <em>"Which three (3) variance lines did we stop explaining?"</em> Write down the answers. They are your starting list.</p></div>
+</div>
+</section>
+<section id="ch3">
+<div class="eyebrow">Chapter 3 · Part 1, Protect the downside</div>
+<h2>Compliance Is Exposure</h2>
+<p class="lead">Every obligation you have missed is a liability with a clock on it, and the clock is already running.</p>
+<h3>Thirty-five people and a fourteen-month contract</h3>
+<p>A manufacturing plant keeps thirty-five (35) workers on contractual terms. They run the line every day. Some have been there fourteen (14) months. Nobody decided to ignore the rules. Each renewal was signed to avoid a decision.</p>
+<p>This is a composite, and it repeats across the country. One complaint to DOLE, or one inspection, and thirty-five (35) quiet renewals become thirty-five (35) claims. Regularizing them on schedule would have cost a fraction of what the claims cost to defend.</p>
+<h3>Why this belongs on the P&amp;L</h3>
+<p>Finance already knows how to treat a lawsuit it might lose. It estimates the likelihood, estimates the amount, and decides whether the number belongs in the books. Compliance gaps deserve the same discipline. Most conglomerates treat them as paperwork instead, so the exposure is never summed and never owned.</p>
+<h3>Five exposures every Philippine conglomerate carries</h3>
+<ol class="pl">
+<li><strong>Wage and benefit shortfalls.</strong> Holiday, overtime and night differential pay, regional wage orders, the 13th month, service incentive leave. Each is small per person and multiplied across a workforce and several years.</li>
+<li><strong>Overdue regularization.</strong> People kept on contractual or probationary terms in roles the business needs every day.</li>
+<li><strong>Contracting arrangements.</strong> Workers supplied by a contractor. If the arrangement fails the rules on legitimate contracting, the principal can be treated as the employer.</li>
+<li><strong>Statutory remittances.</strong> SSS, PhilHealth and Pag-IBIG contributions paid late, short or not at all.</li>
+<li><strong>Terminations and disputes.</strong> Cases at DOLE or the NLRC, and complaints you can see coming. An illegal dismissal finding can carry back wages and either reinstatement or separation pay in lieu.</li>
+</ol>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Build an exposure register. One row per exposure: who is affected, the evidence, the amount, an owner, a date of last review. The likelihood is a judgment, so put it through your labor counsel before it reaches an executive.</p>
+<ul>
+<li>Present both numbers: the probability-weighted exposure and the worst case. Executives remember the second one.</li>
+<li>Ask Finance whether any item belongs in a provision. That decision is theirs and their auditors', not yours.</li>
+<li>Rules change. Every legal statement in this chapter is for orientation. Counsel confirms what applies to you.</li>
+</ul>
+</div>
+<h3>Build the exposure register</h3>
+<p>For each exposure, enter the number of people or cases, the amount you would owe for each, and your best estimate of the chance it becomes a finding or a claim. The starting figures are <strong>illustrative.</strong></p>
+<div class="invoice" id="expo">
+<div class="inv-h"><span><b>Exposure register No. 0001</b></span><span>Status: open</span></div>
+<div class="inv-b">
+<fieldset><legend>1 · Wage and benefit shortfalls</legend>
+<p class="hint">People paid short, and the shortfall each over the period a claim could reach.</p>
+<div class="fg3">
+<div class="fld"><label for="c_n1">People</label><div class="w"><input id="c_n1" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_a1">Owed each</label><div class="w"><span class="u">₱</span><input id="c_a1" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_p1">Chance of a claim</label><div class="w"><input id="c_p1" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div>
+<div class="xres"><span>Worst case <b id="c_w1"></b></span><span>Weighted <b id="c_e1"></b></span></div>
+</fieldset>
+<fieldset><legend>2 · Overdue regularization</legend>
+<p class="hint">People kept on contractual terms in roles the business needs every day. Amount each covers back benefits, differentials and legal cost.</p>
+<div class="fg3">
+<div class="fld"><label for="c_n2">People</label><div class="w"><input id="c_n2" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_a2">Owed each</label><div class="w"><span class="u">₱</span><input id="c_a2" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_p2">Chance of a claim</label><div class="w"><input id="c_p2" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div>
+<div class="xres"><span>Worst case <b id="c_w2"></b></span><span>Weighted <b id="c_e2"></b></span></div>
+</fieldset>
+<fieldset><legend>3 · Contracting arrangements</legend>
+<p class="hint">Contractor-supplied workers. Amount each is what you would owe if they were treated as your employees.</p>
+<div class="fg3">
+<div class="fld"><label for="c_n3">Workers</label><div class="w"><input id="c_n3" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_a3">Owed each</label><div class="w"><span class="u">₱</span><input id="c_a3" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_p3">Chance of a finding</label><div class="w"><input id="c_p3" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div>
+<div class="xres"><span>Worst case <b id="c_w3"></b></span><span>Weighted <b id="c_e3"></b></span></div>
+</fieldset>
+<fieldset><legend>4 · Statutory remittances</legend>
+<p class="hint">People whose SSS, PhilHealth or Pag-IBIG contributions are late, short or missing. Amount each is arrears plus penalties.</p>
+<div class="fg3">
+<div class="fld"><label for="c_n4">People</label><div class="w"><input id="c_n4" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_a4">Owed each</label><div class="w"><span class="u">₱</span><input id="c_a4" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_p4">Chance of a finding</label><div class="w"><input id="c_p4" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div>
+<div class="xres"><span>Worst case <b id="c_w4"></b></span><span>Weighted <b id="c_e4"></b></span></div>
+</fieldset>
+<fieldset><legend>5 · Open and likely disputes</legend>
+<p class="hint">Cases at DOLE or the NLRC and complaints you can see coming. Amount each is back wages, separation pay or reinstatement cost, plus legal fees.</p>
+<div class="fg3">
+<div class="fld"><label for="c_n5">Cases</label><div class="w"><input id="c_n5" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_a5">Owed each</label><div class="w"><span class="u">₱</span><input id="c_a5" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="c_p5">Chance you lose</label><div class="w"><input id="c_p5" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div>
+<div class="xres"><span>Worst case <b id="c_w5"></b></span><span>Weighted <b id="c_e5"></b></span></div>
+</fieldset>
+<fieldset><legend>Scale it</legend><div class="fg">
+<div class="fld"><label for="c_nm">Net margin of the business</label><div class="w"><input id="c_nm" type="number" inputmode="decimal" min="0.1" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<p class="rst">Example figures, not yours. <button type="button" id="c_reset">Reset to the example</button></p>
+</div>
+<div class="stick" aria-live="polite">
+<div><div class="k">Weighted exposure</div><div class="v sm" id="c_te">₱0</div></div>
+<div><div class="k" style="text-align:right">Worst case</div><div class="p sm" id="c_tw">₱0</div></div>
+</div>
+</div>
+<p>With the example, the weighted exposure is ₱4.2 million and the worst case is ₱14.3 million. Two items carry most of the weight: the overdue regularizations and the open disputes. Fixing the first is a decision. The second is already out of your hands.</p>
+<div class="scale">
+<div class="hot"><span>Largest weighted item</span><b id="c_top">n/a</b></div>
+<div><span>Revenue to earn back the weighted exposure at your net margin</span><b id="c_rev">₱0</b></div>
+</div>
+<h3>Where I will push back on you</h3>
+<p>This calculator is not a legal opinion. The percentages are judgments, and a wrong judgment in either direction costs money. Too low and you sleep through a claim. Too high and you spend on a problem you do not have.</p>
+<p>It is also not a reason to run compliance on fear. The goal is the opposite: a register short enough that one person can read it in ten (10) minutes, with an owner and a date against every line. A long register nobody reads is the same silence as before, with better formatting.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Weighted exposure and worst case, side by side.</p>
+<ol>
+<li>List the five exposures for one SBU. Add any the sector adds, such as site safety or maritime manning rules.</li>
+<li>For each, count people or cases and put a peso figure on what you would owe each.</li>
+<li>Estimate the chance with your labor counsel in the room.</li>
+<li>Enter the figures. Read both totals aloud before you share them.</li>
+</ol></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which one (1) exposure do you close before the next audit or inspection? Attach a budget and a date.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Ask your labor counsel: <em>"If this were your company, which of these five would you fix first, and what would it cost?"</em></p></div>
+</div>
+</section>
+<section id="ch4">
+<div class="eyebrow">Chapter 4 · Part 1, Protect the downside</div>
+<h2>Key People and the Ranks Dynamic</h2>
+<p class="lead">Two risks sit at opposite ends of the org chart and cost money the same way: the few people you cannot replace, and the many whose silence you mistake for contentment.</p>
+<h3>The Friday test</h3>
+<p>Pick any business unit. Ask one question: <strong>if this person resigned on Friday, what stops on Monday?</strong></p>
+<p>If the answer is "nothing," the seat is a normal seat. If the answer is a production line, a client relationship, a permit, a signature or a schedule only one head holds, you have found a single point of failure. Most leaders can name two or three (3) of them. Few can name the seventh, and the seventh is usually the one who leaves.</p>
+<p>A composite: a plant manager is the only one who knows the sequence that keeps a line running between maintenance windows. Nothing is written down. He is offered a better job. The line runs at 60% for five (5) months while his replacement relearns what he carried in his head.</p>
+<h3>Price the people you cannot replace</h3>
+<p>A key-person exit costs more than an ordinary exit because the vacancy is long and the margin at stake is large. The register below prices each seat with three (3) numbers: months to rebuild what the person held, margin at risk each of those months, and the chance of losing them in the next twelve (12).</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>The HR terms are <strong>criticality</strong> (impact if the seat is vacant) and <strong>flight risk</strong> (likelihood of exit). Plot each key person on both. Do not trust a manager's guess at flight risk alone. Run a stay conversation with each person and note what they say keeps them, and what would make them look.</p>
+<ul>
+<li>Criticality inputs: unique knowledge, relationships, authority, scarcity in the labor market.</li>
+<li>Flight risk signals: pay position against the market, time since the last promotion or real change in scope, a new manager, a recruiter's recent interest.</li>
+</ul>
+</div>
+<div class="invoice" id="keyp">
+<div class="inv-h"><span><b>Key-person register No. 0001</b></span><span>Horizon: 12 months</span></div>
+<div class="inv-b">
+<fieldset><legend>Role 1</legend><div class="fg3">
+<div class="fld"><label for="k_r1">Role</label><div class="w"><input id="k_r1" type="text" maxlength="40"></div></div>
+<div class="fld"><label for="k_m1">Months to rebuild</label><div class="w"><input id="k_m1" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_g1">Margin at risk a month</label><div class="w"><span class="u">₱</span><input id="k_g1" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_p1">Chance of exit</label><div class="w"><input id="k_p1" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div><div class="xres"><span>Worst case <b id="k_w1"></b></span><span>Weighted <b id="k_e1"></b></span></div></fieldset>
+<fieldset><legend>Role 2</legend><div class="fg3">
+<div class="fld"><label for="k_r2">Role</label><div class="w"><input id="k_r2" type="text" maxlength="40"></div></div>
+<div class="fld"><label for="k_m2">Months to rebuild</label><div class="w"><input id="k_m2" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_g2">Margin at risk a month</label><div class="w"><span class="u">₱</span><input id="k_g2" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_p2">Chance of exit</label><div class="w"><input id="k_p2" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div><div class="xres"><span>Worst case <b id="k_w2"></b></span><span>Weighted <b id="k_e2"></b></span></div></fieldset>
+<fieldset><legend>Role 3</legend><div class="fg3">
+<div class="fld"><label for="k_r3">Role</label><div class="w"><input id="k_r3" type="text" maxlength="40"></div></div>
+<div class="fld"><label for="k_m3">Months to rebuild</label><div class="w"><input id="k_m3" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_g3">Margin at risk a month</label><div class="w"><span class="u">₱</span><input id="k_g3" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_p3">Chance of exit</label><div class="w"><input id="k_p3" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div><div class="xres"><span>Worst case <b id="k_w3"></b></span><span>Weighted <b id="k_e3"></b></span></div></fieldset>
+<fieldset><legend>Role 4</legend><div class="fg3">
+<div class="fld"><label for="k_r4">Role</label><div class="w"><input id="k_r4" type="text" maxlength="40"></div></div>
+<div class="fld"><label for="k_m4">Months to rebuild</label><div class="w"><input id="k_m4" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_g4">Margin at risk a month</label><div class="w"><span class="u">₱</span><input id="k_g4" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="k_p4">Chance of exit</label><div class="w"><input id="k_p4" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div><div class="xres"><span>Worst case <b id="k_w4"></b></span><span>Weighted <b id="k_e4"></b></span></div></fieldset>
+<fieldset><legend>Retention plan</legend><div class="fg">
+<div class="fld"><label for="k_ret">Retention spend per person a year</label><div class="w"><span class="u">₱</span><input id="k_ret" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<p class="rst">Example figures, not yours. <button type="button" id="k_reset">Reset to the example</button></p>
+</div>
+<div class="stick" aria-live="polite">
+<div><div class="k">Weighted loss</div><div class="v sm" id="k_te">₱0</div></div>
+<div><div class="k" style="text-align:right">Worst case</div><div class="p sm" id="k_tw">₱0</div></div>
+</div>
+</div>
+<p>With the example, four seats carry a worst case of ₱5.5 million and a weighted loss of ₱0.8 million. Retention spend of ₱600,000 (₱150,000 across four people) looks high against ₱0.8 million. Read it the other way.</p>
+<div class="scale">
+<div class="hot"><span>Total retention spend</span><b id="k_spend">₱0</b></div>
+<div><span>Points it must take off each exit chance to pay for itself</span><b id="k_be">n/a</b></div>
+<div><span>Share of the weighted loss the spend equals</span><b id="k_share">n/a</b></div>
+</div>
+<p>Spending ₱600,000 pays for itself if it lowers each person's chance of leaving by about eleven (11) points. Whether it does depends on what the money buys. A bonus nobody connects to their future buys very little. A deputy, a documented process and a real conversation about their next role buy much more.</p>
+<h3>Where I will push back on you</h3>
+<p>A key person is also a management failure. If one head holds the sequence, the permit relationship or the client, the company allowed it. The cheapest retention plan is a second person who can do the job at 70%, and a written page of what the first person knows.</p>
+<p>Retention pay has a second price. When the ranks learn that a select few received a retention award, the next grievance carries it. Do it, and be ready to explain why it protects everyone's jobs.</p>
+<h3>The gate between the ranks and management</h3>
+<p>The ranks are rank-and-file employees: the people who run the lines, the sites, the vessels and the counters. The gate is the space between them and the people who decide. It costs money when information crosses it late, when a grievance has no short path to someone who can fix it, and when supervisors are the only interface and have neither the authority nor the time.</p>
+<p>A composite: a night shift raises a problem with schedule changes. It goes to a supervisor, then waits five (5) weeks. By week six (6), it is a slowdown. By week eight (8), counsel is involved. The first conversation, held in week one (1), would have cost one supervisor's afternoon.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Track grievances as data, not anecdote: number raised, age of each open item, time to first response, time to resolution, repeat topics by site and shift. A site with a long first-response time is a dispute waiting for a date.</p>
+<ul>
+<li>Where a union and a collective bargaining agreement exist, the agreement and its grievance machinery govern. Counsel sets the line between a conversation and a labor matter.</li>
+<li>Where there is no union, build a short, visible path anyway: a named person, a response time you can keep.</li>
+</ul>
+</div>
+<h3>Price your last dispute</h3>
+<p>Take the last dispute that reached a formal stage. Add everything that landed on the company. The starting figures are <strong>illustrative.</strong></p>
+<div class="invoice" id="disp">
+<div class="inv-h"><span><b>Dispute cost No. 0001</b></span><span>All-in</span></div>
+<div class="inv-b">
+<fieldset><legend>Management and counsel</legend><div class="fg">
+<div class="fld"><label for="d_mh">Management and HR hours spent</label><div class="w"><input id="d_mh" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_mr">Loaded cost per hour</label><div class="w"><span class="u">₱</span><input id="d_mr" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_legal">Counsel and filing fees</label><div class="w"><span class="u">₱</span><input id="d_legal" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_set">Settlement, back pay or premium paid</label><div class="w"><span class="u">₱</span><input id="d_set" type="number" inputmode="decimal" min="0" step="any"></div></div>
+</div></fieldset>
+<fieldset><legend>Lost output</legend><div class="fg">
+<div class="fld"><label for="d_days">Days of disruption</label><div class="w"><input id="d_days" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_ranks">People affected</label><div class="w"><input id="d_ranks" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_daily">Loaded daily cost per person</label><div class="w"><span class="u">₱</span><input id="d_daily" type="number" inputmode="decimal" min="0" step="any"></div></div>
+<div class="fld"><label for="d_lost">Output lost on those days</label><div class="w"><input id="d_lost" type="number" inputmode="decimal" min="0" max="100" step="any"><span class="u r">%</span></div></div>
+</div></fieldset>
+<p class="rst">Example figures, not yours. <button type="button" id="d_reset">Reset to the example</button></p>
+<div class="lines" id="d_lines"></div>
+</div>
+<div class="stick" aria-live="polite">
+<div><div class="k">Cost of one dispute</div><div class="v" id="d_tot">₱0</div></div>
+<div><div class="k" style="text-align:right">per person affected</div><div class="p sm" id="d_pp">₱0</div></div>
+</div>
+</div>
+<p>With the example, one dispute costs about ₱1.0 million, or ₱12,555 for each person it touched. The settlement is the smallest part of the story. The management hours, the counsel and the lost days are the larger share, and none of it appears on a line called "dispute."</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Your single points of failure, with a worst case and a break-even for retention.</p>
+<ol>
+<li>Walk each business unit with its head. Ask the Friday test for every senior seat.</li>
+<li>Keep only the seats where the answer is a stop, not a slowdown. Keep the list short enough to act on.</li>
+<li>Enter months to rebuild, margin at risk and your honest chance of exit.</li>
+<li>Read the break-even. If the points required look unrealistic, change the plan, not the figure.</li>
+</ol></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>For each key seat, choose one: a retention plan, a named deputy, or a written knowledge page. Pick one (1) first and date it.</p></div>
+<div class="t"><b class="l">Conversations to have this week</b>
+<p>With a key person: say what they hold for the company and what you see for their next role. Be specific. Then ask: <em>"What would make you look elsewhere?"</em></p>
+<p style="margin-top:.6rem">With the ranks: spend one hour on a night shift. Ask a supervisor and two people from the ranks: <em>"What have we promised that has not happened yet?"</em></p></div>
+</div>
+</section>
+<section id="ch5">
+<div class="eyebrow">Chapter 5 · Part 2, Build the engine</div>
+<h2>Seats and Hires</h2>
+<p class="lead">A seat that costs more than it earns or protects is a subsidy, and most org charts carry several.</p>
+<h3>Fourteen heads became twenty-two</h3>
+<p>A department grows from fourteen (14) to twenty-two (22) people in two years. Each hire was approved on its own merits: a manager was stretched, a deadline was close. Nobody asked what the department would produce with eight (8) more people. Revenue per head fell for six (6) straight quarters, and the cause had no owner because no single hire looked wrong. This is a composite.</p>
+<h3>Every seat has a job</h3>
+<p>A seat does one of three (3) things. It <strong>earns</strong> revenue or margin. It <strong>protects</strong> something that would otherwise be lost: safety, compliance, quality, a client. Or it <strong>enables</strong> others to do the first two.</p>
+<p>Write one sentence for every seat: <em>this seat earns, protects or enables ______, and we will know by ______.</em> If you cannot finish it, the seat needs redesign before it needs a hire.</p>
+<h3>A requisition is a capital request</h3>
+<p>Treat a hire the way you treat a machine: money out now, value in later, with a payback period and a hurdle. The inputs are few. What the seat is worth in a year. What the person costs, loaded. What the hire costs. How long until full speed.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Time-to-fill and cost-per-hire measure your process. <strong>Quality of hire</strong> measures the result: performance and retention at month twelve (12). Track which sources produce hires who reach month twelve (12), then spend there.</p>
+<p>Add the EOS GWC test to the requisition: does the candidate <em>get it</em>, <em>want it</em>, and have the <em>capacity</em> for the seat? Write the answer down before the offer, not after.</p>
+</div>
+<p>The starting figures describe an engineer-level seat and are <strong>illustrative.</strong> Use the requisition you are about to approve.</p>
+<div class="invoice" data-calc="hire"></div>
+<p>With the example, the seat pays back in month six (6) and returns about ₱1.4 million over thirty-six (36) months. Now set the ramp to eight (8) months at 30% output. Payback moves to month fifteen (15), past a twelve-month hurdle. A slow ramp, not the salary, is what makes a hire expensive.</p>
+<h3>Where I will push back on you</h3>
+<p>Payback math is built for seats that earn. For seats that protect or enable, enter the avoided cost as the value: the exit cost from Chapter 1, the exposure from Chapter 3. Do not feed it revenue the seat never touches.</p>
+<p>Do not freeze every requisition either. The cheapest way to lose a good manager is to keep adding to their load. And a referral is not free: the bonus is a cost, and so is the standing of the person who referred a poor fit.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Payback in months for your next three (3) requisitions. Enter each in the calculator and write the three numbers on one line.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Freeze or redesign the requisition with the longest payback. Name who tells the hiring manager.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Ask the hiring manager: <em>"What will this person produce by day ninety (90) that we can count?"</em> If the answer is vague, the requisition is not ready.</p></div>
+</div>
+</section>
+<section id="ch6">
+<div class="eyebrow">Chapter 6 · Part 2, Build the engine</div>
+<h2>Onboarding and Pay</h2>
+<p class="lead">The gap between a start date and first real output is paid in full, and so is the pay gap that makes your best people look elsewhere.</p>
+<h3>The new hire who out-earned the veteran</h3>
+<p>A new engineer joins at ₱48,000 a month. A three-year incumbent in the same grade earns ₱49,000. The difference leaks within weeks, the way it always does. Two strong performers, one of them paid ₱51,000 and meant to be protected, update their resumes. This is a composite, and most conglomerates have a version of it.</p>
+<h3>Onboarding is time-to-productivity</h3>
+<p>Day one is not the start of productivity. It is the start of the payroll. Define <strong>productive</strong> as the day a new hire produces something countable without supervision, then count the days.</p>
+<p>Everything in onboarding either shortens that number or does not. A named buddy, a first assignment by day three (3), tools ready on arrival, a manager who sets the first thirty (30) days in writing: these matter because they shave days.</p>
+<div class="invoice" data-calc="onb"></div>
+<p>With the example, thirty (30) hires a year at a three-month ramp cost about ₱2.4 million in paid-but-missing output. Cut the ramp by 30% and about ₱730,000 comes back, roughly twenty-seven (27) days per hire.</p>
+<h3>Pay is the price of talent</h3>
+<p>Three (3) numbers tell you whether your pay holds talent. The <strong>compa-ratio</strong> is pay divided by the midpoint of the band. The <strong>compression index</strong> is the pay of your newest hire divided by the pay of a tenured incumbent. The <strong>premium for tenure</strong> is the gap you intend between them.</p>
+<p>When new hires nearly match veterans, the veterans find out. Then they price their own exit.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<p>Review the spread by grade, not company-wide. Check every offer against current incumbents in the same grade before it goes out. If your salary structure is being redesigned, this is the first thing to test against the new bands.</p>
+<ul>
+<li>Compa-ratio = pay ÷ band midpoint. Below 90% flags a retention risk. Above 110% flags a band problem or a promotion that is due.</li>
+<li>Pay differences for similar work need a documented reason. Counsel reviews any pay-equity question.</li>
+</ul>
+</div>
+<div class="invoice" data-calc="pay"></div>
+<p>With the example, new hires earn 98% of what a three-year incumbent earns. Restoring an 8% premium for twenty-five (25) incumbents costs about ₱923,000 a year. One avoided exit is worth about ₱541,000 by the Chapter 1 rule. The fix pays for itself if it prevents about 1.7 exits.</p>
+<h3>Where I will push back on you</h3>
+<p>Do not raise everyone. Start with the seats in your Chapter 4 register and the grades where compression is worst. And do not treat pay as the whole answer. People leave over managers and paths at least as often as over ₱2,000 a month. The calculator tells you what a fix costs against what exits cost. It does not tell you why people leave. Ask them.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>The compression index for your three (3) largest grades, and days to productive for your last ten (10) hires.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which grade is corrected first, by how much, and by when. Attach the cost and the exits it must prevent.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Ask someone hired in the last ninety (90) days: <em>"What took longest before you could do your job alone?"</em> Write the answer on the onboarding checklist.</p></div>
+</div>
+</section>
+<section id="ch7">
+<div class="eyebrow">Chapter 7 · Part 2, Build the engine</div>
+<h2>Performance Per Peso</h2>
+<p class="lead">Appraisal is paperwork. Performance is output per peso, and the two rarely agree.</p>
+<h3>Forty-five percent exceeded expectations</h3>
+<p>At year-end, 45% of a unit's people are rated "exceeds expectations." The unit met one (1) target of five (5). Nobody lied. The ratings were written against effort, goodwill and the supervisor's wish to avoid a hard conversation. This is a composite.</p>
+<h3>The unit economics of a head</h3>
+<p>Every unit has an input, its loaded payroll, and an output: revenue, margin, tons shipped, units handed over, vessel turns. Divide the second by the first. That is <strong>output per peso</strong>. It is crude and it is honest.</p>
+<p>Track it every quarter. A rising number means the unit gets more from the same pay. A falling number means growth is being paid for in headcount.</p>
+<h3>Ratings against results</h3>
+<p>Put two numbers side by side: the share of people rated at the top, and the share of unit targets actually met. A gap above fifteen (15) points means the rating scale is measuring something other than results. It is rarely dishonesty. Goals were vague, supervisors had no calibration, and the appraisal came once a year.</p>
+<p>EOS gives you a cleaner contract. A Rock is done or not done, for ninety (90) days, with one owner. Rocks are the best evidence of delivery you will get.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Run calibration before ratings are final. Ask for evidence behind every top rating.</li>
+<li>Track the rating distribution by unit and by supervisor. A supervisor whose whole team is "exceeds" is a data point.</li>
+<li>Goal quality: specific, measurable, dated. Reject goals that read as activities.</li>
+<li>Three (3) conversations a year beat one form. The appraisal workflow is a prime automation target (Chapter 12).</li>
+</ul>
+</div>
+<div class="invoice" data-calc="perf"></div>
+<p>With the example, output per peso rose from ₱3.59 to ₱3.75, while ratings run twenty-five (25) points ahead of results. A 5% gain in output per peso at the same payroll is worth about ₱9 million.</p>
+<h3>Where I will push back on you</h3>
+<p>Output per peso punishes support functions whose output is hard to price. For them, use cost-to-serve and service levels. And do not answer a rating gap by forcing a curve. That trades honesty for arithmetic. Fix the goals first, then calibrate.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Output per peso of payroll for three (3) units, this year against last, plus the rating gap for each.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which top rating will you stop giving without evidence? Announce the evidence rule before the next cycle.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Hold one honest one-on-one with the person you rated highest last year. Ask: <em>"What did I miss that you did, and what did you do that did not matter?"</em></p></div>
+</div>
+</section>
+<section id="ch8">
+<div class="eyebrow">Chapter 8 · Part 3, Grow the asset</div>
+<h2>Capability and Bench</h2>
+<p class="lead">Training is an expense or an investment, depending on where it points.</p>
+<h3>Sixty courses, no Rocks</h3>
+<p>A company spends ₱6 million on training in a year, across sixty (60) courses. Asked which courses served a Rock, HR can name four (4). Meanwhile two (2) senior roles open and no internal candidate qualifies. This is a composite.</p>
+<h3>Point the money at a gap</h3>
+<p>List your top three (3) Rocks. For each, name the capability the people doing it do not yet have. That is the gap. Training that closes a named gap is an investment. Training that fills a calendar is an expense.</p>
+<h3>The bench has three depths</h3>
+<p>For each critical role, ask who could step in <strong>now</strong>, who within <strong>twelve (12) months</strong>, who within <strong>thirty-six (36)</strong>, and for which roles nobody. A list of names is a wish. A bench is a list of names with evidence of readiness and a development plan against the gap.</p>
+<p>A career lattice makes the bench visible to the people on it. It maps lateral and upward moves by role, so people can see how to grow without leaving.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Build a skills matrix by role family, then an Individual Development Plan for every identified successor, with an owner and dates.</li>
+<li>Write readiness criteria down. "Ready now" means the person has done the role's work at a stretch assignment.</li>
+<li>Handle a nine-box with care. A label such as "high potential" sticks to people and to those left out.</li>
+<li>Review the bench quarterly. The HRIS should hold the data.</li>
+</ul>
+</div>
+<div class="invoice" data-calc="bench"></div>
+<p>With the example, twenty percent (20%) of critical roles have a ready-now successor, and a quarter have none. Of ₱6 million in training spend, only ₱1.8 million points at a named gap.</p>
+<h3>Where I will push back on you</h3>
+<p>"Ready" is evidence, not impression. A successor who does not know they are named, or does not want the role, is not coverage. And do not mark someone ready now because the incumbent leaves next month. That is a vacancy with a hopeful label.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Ready-now coverage of your critical roles, and the share of training spend aimed at a named gap.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which one (1) role gets a bench built first? Pick the one with the largest number from Chapter 4.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Tell one identified successor what you see in them. Then ask: <em>"What would you need to be ready, and do you want this?"</em></p></div>
+</div>
+</section>
+<section id="ch9">
+<div class="eyebrow">Chapter 9 · Part 3, Grow the asset</div>
+<h2>Succession as Insurance</h2>
+<p class="lead">Succession is insurance. You pay a premium now so a vacancy does not become a claim later.</p>
+<h3>The heir who was not ready</h3>
+<p>The long-time head of a business unit in a family-rooted group prepares to retire. The heir apparent is a family member with a strong name and thin operating experience. The senior professional manager is trusted by the ranks and not by the family. For nine (9) months an interim holds both seats. The unit loses two (2) clients and a year of planning. This is a composite.</p>
+<h3>Premium, coverage, claim</h3>
+<p>The <strong>premium</strong> is what you spend developing successors. The <strong>coverage</strong> is the share of critical roles with a ready-now successor. The <strong>claim</strong> is what a vacancy costs when it happens: months without a successor times the margin at stake.</p>
+<h3>Two successions, not one</h3>
+<p>A family-rooted conglomerate has two (2). One is the succession of ownership and governance. It belongs to the owners, the board and the family. The other is the succession of management roles. It belongs to the CEO and HR.</p>
+<p>A plan that mixes them fails both. Management succession stalls while it waits for an ownership decision nobody will make.</p>
+<h3>Where a succession plan fails an executive review</h3>
+<ul class="pl">
+<li>No emergency successor for the top three (3) seats if someone leaves tomorrow.</li>
+<li>A successor who is a copy of the incumbent.</li>
+<li>No timeline, no development plan, no budget.</li>
+<li>The successor was never asked.</li>
+<li>No plan B if the successor leaves.</li>
+<li>The incumbent is not part of the conversation.</li>
+</ul>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Write an Individual Development Plan for each successor: the gap, the stretch assignment, the sponsor, the dates.</li>
+<li>Keep an emergency coverage list for the top roles, separate from the development slate.</li>
+<li>Review readiness in the quarterly cycle. Send the slate to the board once a year.</li>
+<li>Governance instruments, such as a family constitution or shareholder arrangements, are for counsel and the owners.</li>
+</ul>
+</div>
+<div class="invoice" data-calc="ins"></div>
+<p>With the example, lifting ready-now coverage from 20% to 70% across forty (40) roles cuts the expected annual vacancy cost from about ₱4.0 million to ₱2.0 million. The premium is ₱1.8 million, so year one nets about ₱0.2 million. The calculator does not count the retention value of developing people. Treat year one as the floor.</p>
+<h3>Where I will push back on you</h3>
+<p>The weakest part of most plans is the incumbent conversation, not the slate. An incumbent who feels replaced slows the plan down. And do not let the plan live in HR. It needs a board-level owner and a date.</p>
+<p>The chance of a vacancy is also a judgment, and it is not the same for every role. Raise it for incumbents near retirement. A flat average hides the roles that matter.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Ready-now coverage and expected annual claim for the critical roles in one SBU.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which one (1) succession gap goes to the board? Bring a named role, a cost, and a date.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Sit with the incumbent of the role that matters most. Ask: <em>"What do you want your last year in this seat to build?"</em></p></div>
+</div>
+</section>
+<section id="ch10">
+<div class="eyebrow">Chapter 10 · Part 3, Grow the asset</div>
+<h2>Culture and the Conglomerate Question</h2>
+<p class="lead">Culture is what people do when nobody supervises them, and what it costs when they do something else.</p>
+<h3>Three values on every wall</h3>
+<p>A company prints three (3) values on every wall. In one quarter its leaders make forty (40) major decisions. Asked afterward, they can name six (6) where a value changed the outcome. The other thirty-four (34) were decided on cost, speed and habit. This is a composite.</p>
+<h3>A value only counts if it changes a decision</h3>
+<p>Ask of each value: <strong>when did this cost us something?</strong> A value that never costs anything is decoration. Check three (3) places. <strong>Decisions:</strong> did a value change or settle the outcome. <strong>Promotions:</strong> was behavior against the values assessed in writing. <strong>The weekly meeting:</strong> does the L10 agenda surface a values conflict, or only numbers?</p>
+<p>In EOS the core values sit in the VTO. The discipline is to use them to hire, to review and to part ways.</p>
+<div class="invoice" data-calc="cult"></div>
+<p>With the example, a value touched 15% of decisions and 28% of promotions. That is a company with values on the wall and not yet in the room.</p>
+<h3>The conglomerate question</h3>
+<p>Who does what, Shared Services or the SBU? A working rule: <strong>centralize what is the same everywhere and transactional</strong>: payroll processing, statutory filings, the HRIS, policy templates. <strong>Embed what depends on the business</strong>: workforce planning, employee relations, succession, onboarding on the line.</p>
+<p>Then decide who pays, charge-back or allocation, in advance, with service levels written down.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Publish a service catalog: what Shared Services provides, how fast, at what cost.</li>
+<li>Measure cost-to-serve per employee for both models. Include the manager hours spent on forms, or the shared model will look cheaper than it is.</li>
+<li>Review the arrangement each quarter with the SBU heads. A resentful SBU head is your best source of data.</li>
+</ul>
+</div>
+<div class="invoice" data-calc="cts"></div>
+<p>With the example, Shared Services costs ₱9,000 per employee and embedded HR ₱12,000. Add 300 manager hours a month on HR forms, about ₱2.9 million a year, and the true shared cost is ₱10,440 per employee.</p>
+<h3>Where I will push back on you</h3>
+<p>Centralizing to save money often moves the cost to managers, where nobody counts it. And culture cannot be centralized. Shared Services can publish the values. Only managers can enact them on a Tuesday afternoon.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Your value-citation rate for last quarter, and the true cost per employee under your HR model.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Name one habit you will enforce this quarter and one you will stop excusing.</p></div>
+<div class="t"><b class="l">Conversations to have this week</b>
+<p>Praise one behavior by name, in public, where others can hear it.</p>
+<p style="margin-top:.6rem">Then sit with an SBU head who resents the center. Ask: <em>"What does Shared Services cost you that we do not count?"</em></p></div>
+</div>
+</section>
+<section id="ch11">
+<div class="eyebrow">Chapter 11 · Part 4, Run it as a business</div>
+<h2>The People P&amp;L and the Quarterly Rhythm</h2>
+<p class="lead">A number with no owner and no rhythm is a report. Give it both and it becomes a P&amp;L.</p>
+<h3>Forty pages of finance, one slide of headcount</h3>
+<p>A CEO's monthly pack has forty (40) pages on revenue, cost and cash. One slide shows headcount. Nobody argues with headcount, because nobody explains it. The largest controllable line in the business gets one slide and no owner. This is a composite.</p>
+<h3>Eight numbers</h3>
+<p>A people P&amp;L needs few numbers, each with an owner:</p>
+<ol class="pl">
+<li>People spend as a share of revenue.</li>
+<li>Revenue per head.</li>
+<li>People spend per head.</li>
+<li>The regretted-exit bill (Chapter 1).</li>
+<li>Leakage as a share of people spend (Chapter 2).</li>
+<li>Weighted compliance exposure (Chapter 3).</li>
+<li>Ready-now successor coverage (Chapters 8 and 9).</li>
+<li>Revenue per peso of people spend.</li>
+</ol>
+<div class="invoice" data-calc="pnl"></div>
+<p>With the example, people spend is 15.0% of revenue and each head carries ₱2.75 million. The three losses you can name, exits, leakage and exposure, total ₱22.9 million. That is 13.9% of everything the company spends on people, and none of it was on a page last year.</p>
+<h3>The quarterly rhythm</h3>
+<p>Put these numbers on the same cadence as sales and cash. Use the EOS meetings you already run.</p>
+<table class="tr">
+<tr><th>Cadence</th><th>What goes on the page</th></tr>
+<tr><td>Weekly (L10, scorecard)</td><td>Headcount against plan, open requisitions, regretted exits to date, unscheduled absence rate, age of the oldest open grievance. People problems join the IDS list like any other issue.</td></tr>
+<tr><td>Quarterly (Rocks)</td><td>People-dependent Rocks, a refreshed exposure register, a bench review, pay compression checked for one grade.</td></tr>
+<tr><td>Annual</td><td>VTO check, pay review, succession slate to the board, appraisal and development cycle.</td></tr>
+</table>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Write a data dictionary: for each metric, the formula, the source system, the owner and the refresh date. Define it once.</li>
+<li>Manual chasing of workforce reports is the case for finishing the HR dashboard. Connect the HRIS, payroll and timekeeping.</li>
+<li>Clean data first. Start with the five numbers you can source cleanly and mark the other three as estimates on the page.</li>
+</ul>
+</div>
+<h3>Where I will push back on you</h3>
+<p>Eight is the limit. A people page with thirty metrics is a data dump. And a dashboard fed by bad data is worse than none, because it carries false authority. If a figure is an estimate, say so on the page in plain words.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>The eight numbers for one SBU, on one page. Use the calculator, then replace each example figure with a sourced one.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Which metric gets a named owner by Friday? Start with the largest loss.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Show the page to your CEO. Say: <em>"These are the numbers I propose we review every quarter."</em></p></div>
+</div>
+</section>
+<section id="ch12">
+<div class="eyebrow">Chapter 12 · Part 4, Run it as a business</div>
+<h2>Automate, Rebuild the Function, First 90 Days</h2>
+<p class="lead">Hand the repetitive work to systems, so people can do the work only people can do.</p>
+<h3>Strategy on weekends</h3>
+<p>An HR team of twelve (12) spends most of its month on signatures, chasing appraisals and assembling workforce reports by hand. Strategy happens on weekends. The leader is a strategic partner in title and a clerk in the calendar. This is a composite, and it is common.</p>
+<h3>What to automate</h3>
+<ul class="pl">
+<li>Signatures and approvals through a workflow with an audit trail.</li>
+<li>Goal-setting and appraisal routing, with reminders that nobody has to send by hand.</li>
+<li>Policy acknowledgments.</li>
+<li>Workforce reports straight from the HRIS.</li>
+<li>First drafts of policies, job descriptions and communications from AI tools, always reviewed by a person.</li>
+</ul>
+<p>Two guardrails. Employee personal data is governed by the Data Privacy Act, so counsel and your data protection officer decide what may enter any tool. And any decision that affects someone's employment gets a human review. Fix the process before you automate it. An automated mess is the same mess, faster.</p>
+<div class="invoice" data-calc="auto"></div>
+<p>With the example, a twelve-person team returns about 5,000 hours a year, worth about ₱2.3 million, or roughly 2.7 full-time equivalents. Against a ₱6 million function that protected or recovered ₱9 million, each peso of HR cost returns ₱1.50.</p>
+<h3>The function that earns its seat</h3>
+<p>A people function does three (3) jobs. <strong>Protect:</strong> compliance, employee relations, the exposure register. <strong>Build:</strong> hiring, pay, performance, capability, succession. <strong>Run:</strong> analytics, systems, the people P&amp;L. One team doing all three at once does none well.</p>
+<p>Decide what HR stops doing: forms nobody reads, reports nobody uses, approvals that add days and no judgment. Hire for judgment, not for forms.</p>
+<div class="desk"><b>Practitioner's desk</b>
+<ul>
+<li>Report your own function's cost per employee and its return per peso, using the same page you gave the executives.</li>
+<li>Common structures: a central team with SBU-based partners, or a central team with a shared transaction desk. Pick on cost-to-serve, not on fashion.</li>
+<li>List your tasks by who must do them: a person with judgment, a system, or nobody. Start the automation with the second list.</li>
+</ul>
+</div>
+<h3>The first ninety days</h3>
+<ol class="pl">
+<li><strong>Days 1 to 30, measure.</strong> Compute three (3) numbers: the cost of one regretted exit (Chapter 1), leakage as a share of payroll (Chapter 2), and your single points of failure (Chapter 4).</li>
+<li><strong>Days 31 to 60, fix.</strong> Plug one leak, close one exposure, name one deputy.</li>
+<li><strong>Days 61 to 90, install.</strong> Build the one-page people P&amp;L, put the people numbers on the L10, and set the first people Rock for next quarter.</li>
+</ol>
+<h3>Where I will push back on you</h3>
+<p>Do not launch twelve initiatives. The book is sequenced for a reason: Part 1 before Part 2. A company that hires faster before it stops leaking is pouring water into a bucket with a hole in it.</p>
+<div class="tool">
+<h3>The one-page tool</h3>
+<div class="t"><b class="l">Number to compute</b>
+<p>Your three (3) numbers from days 1 to 30. Write them on a card and keep it where you plan the quarter.</p></div>
+<div class="t"><b class="l">Decision to make</b>
+<p>Your first people Rock, in one sentence, with one owner and one date.</p></div>
+<div class="t"><b class="l">Conversation to have this week</b>
+<p>Go to the person who owns the largest number on your page. Ask: <em>"What would you change first if this were yours alone to fix?"</em></p></div>
+</div>
+<p class="pull">Back to the first question: <em>who owns it?</em> In ninety (90) days you should answer by name.</p>
+</section>
+<section id="refs">
+<div class="eyebrow">Back matter</div>
+<h2>References and sources</h2>
+<p class="lead">This e-book leans on very little outside data. What it does lean on is listed here, so a skeptical reader can check it.</p>
+<h3>Laws and rules</h3>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.92rem;line-height:1.45">
+<thead><tr style="text-align:left;border-bottom:2px solid var(--ink)"><th style="padding:.5rem .6rem .5rem 0">Where the book says it</th><th style="padding:.5rem .6rem">Source</th><th style="padding:.5rem 0 .5rem .6rem">Checked</th></tr></thead>
+<tbody><tr><td>Overtime, night shift differential, holiday pay, service incentive leave (Ch 2, 3)</td><td>Labor Code of the Philippines, Presidential Decree No. 442, as amended: Book Three, Title I (hours of work) and Title II (wages and holiday pay)</td><td>Confirmed current, October 2026</td></tr><tr><td>Regional wage orders (Ch 2, 3)</td><td>Regional Tripartite Wages and Productivity Boards, wage orders for your region, via the DOLE National Wages and Productivity Commission</td><td>Confirmed current, October 2026</td></tr><tr><td>13th month pay (Ch 1, 2, 3)</td><td>Presidential Decree No. 851 and its implementing rules</td><td>Confirmed current, October 2026</td></tr><tr><td>SSS contributions and remittance (Ch 1, 3)</td><td>Social Security Act of 2018, Republic Act No. 11199, and SSS circulars</td><td>Confirmed current, October 2026</td></tr><tr><td>PhilHealth contributions (Ch 1, 3)</td><td>Universal Health Care Act, Republic Act No. 11223, and PhilHealth circulars</td><td>Confirmed current, October 2026</td></tr><tr><td>Pag-IBIG contributions (Ch 1, 3)</td><td>Home Development Mutual Fund Law of 2009, Republic Act No. 9679</td><td>Confirmed current, October 2026</td></tr><tr><td>Illegal dismissal, back wages, reinstatement or separation pay (Ch 3)</td><td>Labor Code, security of tenure and termination provisions (just and authorized causes), with DOLE and NLRC procedure</td><td>Confirmed current, October 2026</td></tr><tr><td>Regularization case risk (Ch 3)</td><td>Labor Code, regular and probationary employment provisions, and DOLE guidance on contracting</td><td>Confirmed current, October 2026</td></tr><tr><td>Employee personal data in tools (Ch 12)</td><td>Data Privacy Act of 2012, Republic Act No. 10173, and National Privacy Commission issuances</td><td>Confirmed current, October 2026</td></tr><tr><td>EOS: Rocks, L10, VTO, GWC, IDS, scorecard (Ch 4 to 11)</td><td>Gino Wickman, Traction: Get a Grip on Your Business, and EOS Worldwide materials</td><td>Confirmed current, October 2026</td></tr></tbody></table></div>
+<h3>The author's assumptions</h3>
+<p>Everything not listed above is the author's own assumption, and the book does not name a source for it.</p>
+<ul>
+<li>Every peso figure, rate, percentage and headcount in the cases and calculators is the author's assumption for the worked example.</li>
+<li>Every case is the author's composite, not a real file.</li>
+<li>Ratios such as the cost of a vacant seat or of a resignation come from the formulas shown on the page. Replace each input with your own number.</li>
+</ul>
+<h3>How to use this page</h3>
+<p>Laws, wage orders and contribution tables change. This page lists where to look, not what today's figure is. For any legal decision, read the official text and ask counsel.</p>
+<div class="end" style="margin-top:1.6rem;padding-top:.8rem">Legal citations confirmed current by the author, October 2026.</div>
+</section>
+<section id="about">
+<div class="eyebrow">Back matter</div>
+<h2>About the author, rights and use</h2>
+<h3>The author</h3>
+<div class="author"><div class="ph" id="authorPhoto"><img src="data:image/jpeg;base64,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" alt="Portrait of James Villalon II" width="360" height="360"></div><div><b>James Villalon II</b><span>HR Strategic Partner<br>Shared Services HR Division</span></div></div>
+<p>James Villalon II is an HR Strategic Partner who heads the HR Division of the Shared Services group of a Philippine conglomerate, and has been with the group since July 2012. His work is the part of HR that sits next to the numbers: workforce planning, succession, employee relations and performance, translated into decisions for executives and department heads.</p>
+<p>He is a Licensed Social Worker and Psychologist by the Professional Regulation Commission (PRC). He has earned doctorate units in Clinical Science in Social Work and holds an associate degree in Computer Science. He builds his own tools, which is why this e-book carries fifteen (15) working calculators instead of fifteen screenshots of a spreadsheet.</p>
+<h3>Rights</h3>
+<p>&copy; 2026 James Villalon II. All rights reserved. You may read this e-book, use the calculators with your own numbers, and share the link with colleagues. Please do not copy, resell or republish the text without written permission.</p>
+<h3>How to read the numbers</h3>
+<ul>
+<li>Every case is an illustrative composite. No case describes a real person, team or company.</li>
+<li>Every peso figure is an assumption for the worked example. None is data from the author's employer or any other organization.</li>
+<li>The calculators run in your browser and store nothing. Your inputs stay on your device.</li>
+<li>Legal statements are orientation only. Before you act on a labor, tax or social-contribution question, ask counsel.</li>
+</ul>
+<h3>A note on views</h3>
+<p>The opinions here are the author's own. They are not an official position of any employer.</p>
+<div class="end" style="margin-top:1.6rem;padding-top:.8rem">The People Business · Edition 0.2 · October 2026</div>
+</section>
+<div class="end">Edition 0.2. All peso figures, assumptions and cases are the author's illustrative composites, not real company data. Legal statements are for orientation only.</div>
+</div>
+<section class="bcover" id="back" aria-label="Back cover"><div class="bc-in">
+<div class="fc-top"><span>The People Business</span><span>Back cover</span></div>
+<h2>You already run a people business. <em>Now run it with a P&amp;L.</em></h2>
+<p>You do not need to fix everything this quarter. You need three numbers, one owner and one date.</p>
+<div class="bc-steps">
+<div><b>1</b><span>Price one resignation with the Chapter 1 calculator. Use your own numbers.</span></div>
+<div><b>2</b><span>Put your biggest people number on the next L10 agenda.</span></div>
+<div><b>3</b><span>Ask the room: who owns it? Write the name down.</span></div>
+</div>
+<div class="bc-q">That is a Rock. Start it this week.</div>
+<div class="bc-who"><img src="data:image/jpeg;base64,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" alt="Portrait of James Villalon II" width="72" height="72"><div class="bc-by">James Villalon II<br>HR Strategic Partner<br>&copy; 2026 · Edition 0.2</div></div>
+<div><a class="btn" href="#cover">Back to the cover</a></div>
+</div></section>
+<script>
+(function(){
+try{
+var secs=[];for(var i=1;i<=12;i++){var e=document.getElementById('ch'+i);if(e)secs.push(e);}
+function title(el){var h=el.querySelector('h2');return h?h.textContent.trim():''}
+secs.forEach(function(sec,idx){
+var n=idx+1,left=12-n,d=document.createElement('div');d.className='nextup';
+var dots='';for(var k=1;k<=12;k++)dots+='<i'+(k<=n?' class="on"':'')+'></i>';
+var nxt=secs[idx+1];
+var msg=n===12?'You finished the book.':'Chapter '+n+' done. '+left+(left===1?' chapter':' chapters')+' to go.';
+var act=nxt?'<a href="#ch'+(n+1)+'">Next: '+title(nxt).replace(/</g,'&lt;')+'</a>':'<a href="#back">See your first move</a>';
+d.innerHTML='<div class="k">Your progress</div><p>'+msg+'</p>'+act+'<div class="dots" aria-hidden="true">'+dots+'</div>';
+sec.appendChild(d);
+});
+}catch(e){}
+})();
+(function(){
+var D={basic:45000,months:13,loaded:54000,margin:1500000,vac:2.5,fee:15,phrs:24,prate:500,onb:25000,exit:6000,ramp:3,unp:50,team:5,thrs:40,trate:350,delay:40000,exits:20,nm:10};
+var ids=Object.keys(D);
+var el=function(i){return document.getElementById(i)};
+var peso=function(n){return '₱'+Math.round(n).toLocaleString('en-PH')};
+function val(i){var v=parseFloat(el(i).value);return isFinite(v)&&v>=0?v:0}
+function load(){ids.forEach(function(i){el(i).value=D[i]})}
+function calc(){
+var annualCash=val('basic')*val('months');
+var vacLoss=Math.max(0,val('vac')*(val('margin')/12)-val('vac')*val('loaded'));
+var lines=[
+['Net vacancy loss',val('vac')+' mo × monthly margin, less pay not paid',vacLoss],
+['Replacement',val('fee')+'% agency fee on annual cash pay',val('fee')/100*annualCash],
+['Panel and manager time',val('phrs')+' hrs × '+peso(val('prate')),val('phrs')*val('prate')],
+['Onboarding and training','Direct cost',val('onb')],
+['Ramp-up',val('ramp')+' mo × '+val('unp')+'% missing × loaded cost',val('ramp')*(val('unp')/100)*val('loaded')],
+['Exit processing','Clearance, final pay, admin',val('exit')],
+['Team drag',val('team')+' people × '+val('thrs')+' hrs × '+peso(val('trate')),val('team')*val('thrs')*val('trate')],
+['Delay','Overhead while the work waits',val('delay')]
+];
+var total=lines.reduce(function(s,l){return s+l[2]},0);
+var max=Math.max.apply(null,lines.map(function(l){return l[2]}))||1;
+var h='';
+lines.forEach(function(l){
+h+='<div class="row"><span>'+l[0]+'</span><b>'+peso(l[2])+'</b><small>'+l[1]+'</small><div class="bars"><i style="width:'+(l[2]/max*100).toFixed(1)+'%"></i></div></div>';
+});
+el('lines').innerHTML=h;
+el('tot').textContent=peso(total);
+el('pct').textContent=annualCash>0?Math.round(total/annualCash*100)+'%':'n/a';
+var annual=total*val('exits');
+el('annual').textContent=peso(annual);
+var nm=val('nm');
+el('rev').textContent=nm>0?peso(annual/(nm/100)):'n/a';
+}
+load();calc();
+ids.forEach(function(i){el(i).addEventListener('input',calc)});
+el('reset').addEventListener('click',function(){load();calc()});
+var body=document.body;
+el('deskToggle').addEventListener('change',function(e){body.classList.toggle('owner',!e.target.checked)});
+var prog=el('prog');
+function onScroll(){
+var h=document.documentElement.scrollHeight-window.innerHeight;
+prog.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+'%';
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+<script>
+(function(){
+var el=function(i){return document.getElementById(i)};
+var peso=function(n){return '₱'+Math.round(n).toLocaleString('en-PH')};
+function val(i){var v=parseFloat(el(i).value);return isFinite(v)&&v>=0?v:0}
+
+var L={l_head:400,l_loaded:32000,l_ot:1200000,l_otav:25,l_abs:6,l_abt:3,l_idle:3,l_err:35000,l_off:6,l_rec:40,l_nm:10};
+var lids=Object.keys(L);
+function lload(){lids.forEach(function(i){el(i).value=L[i]})}
+function lcalc(){
+var head=val('l_head'),loaded=val('l_loaded'),payroll=head*loaded*12;
+var daily=loaded*12/261;
+var lines=[
+['Avoidable overtime',peso(val('l_ot'))+' a month × 12 × '+val('l_otav')+'% avoidable',val('l_ot')*12*val('l_otav')/100],
+['Excess absence',Math.max(0,val('l_abs')-val('l_abt'))+' days over target × '+head+' heads × '+peso(daily)+' a day',Math.max(0,val('l_abs')-val('l_abt'))*head*daily],
+['Idle and rework time',val('l_idle')+'% of paid time × annual payroll',val('l_idle')/100*payroll],
+['Payroll errors not recovered',peso(val('l_err'))+' a month × 12',val('l_err')*12],
+['Heads above approved plan',val('l_off')+' heads × loaded cost × 12',val('l_off')*loaded*12]
+];
+var total=lines.reduce(function(s,l){return s+l[2]},0);
+var max=Math.max.apply(null,lines.map(function(l){return l[2]}))||1;
+var h='';
+lines.forEach(function(l){
+h+='<div class="row"><span>'+l[0]+'</span><b>'+peso(l[2])+'</b><small>'+l[1]+'</small><div class="bars"><i style="width:'+(l[2]/max*100).toFixed(1)+'%"></i></div></div>';
+});
+el('l_lines').innerHTML=h;
+el('l_tot').textContent=peso(total);
+el('l_pct').textContent=payroll>0?(total/payroll*100).toFixed(1)+'%':'n/a';
+var rec=total*val('l_rec')/100;
+el('l_recv').textContent=peso(rec);
+el('l_rev').textContent=val('l_nm')>0?peso(rec/(val('l_nm')/100)):'n/a';
+}
+lload();lcalc();
+lids.forEach(function(i){el(i).addEventListener('input',lcalc)});
+el('l_reset').addEventListener('click',function(){lload();lcalc()});
+
+var C={n:[60,35,80,25,4],a:[18000,120000,60000,25000,900000],p:[40,30,20,50,35],nm:10};
+var names=['Wage and benefit shortfalls','Overdue regularization','Contracting arrangements','Statutory remittances','Open and likely disputes'];
+function cload(){
+for(var k=0;k<5;k++){el('c_n'+(k+1)).value=C.n[k];el('c_a'+(k+1)).value=C.a[k];el('c_p'+(k+1)).value=C.p[k]}
+el('c_nm').value=C.nm;
+}
+function ccalc(){
+var tw=0,te=0,topV=-1,topN='n/a';
+for(var k=1;k<=5;k++){
+var w=val('c_n'+k)*val('c_a'+k);
+var e=w*Math.min(100,val('c_p'+k))/100;
+el('c_w'+k).textContent=peso(w);
+var eb=el('c_e'+k);eb.textContent=peso(e);
+tw+=w;te+=e;
+if(e>topV){topV=e;topN=names[k-1]}
+}
+el('c_te').textContent=peso(te);
+el('c_tw').textContent=peso(tw);
+el('c_top').textContent=te>0?topN:'n/a';
+el('c_rev').textContent=val('c_nm')>0?peso(te/(val('c_nm')/100)):'n/a';
+}
+var cids=['c_nm'];
+for(var k=1;k<=5;k++){cids.push('c_n'+k,'c_a'+k,'c_p'+k)}
+cload();ccalc();
+cids.forEach(function(i){el(i).addEventListener('input',ccalc)});
+el('c_reset').addEventListener('click',function(){cload();ccalc()});
+})();
+</script>
+<script>
+(function(){
+var el=function(i){return document.getElementById(i)};
+var peso=function(n){return '₱'+Math.round(n).toLocaleString('en-PH')};
+function val(i){var v=parseFloat(el(i).value);return isFinite(v)&&v>=0?v:0}
+
+var K={r:['Project head','Plant manager','Chief estimator','Site safety head'],m:[6,5,4,3],g:[400000,300000,250000,200000],p:[15,12,20,10],ret:150000};
+function kload(){
+for(var k=0;k<4;k++){el('k_r'+(k+1)).value=K.r[k];el('k_m'+(k+1)).value=K.m[k];el('k_g'+(k+1)).value=K.g[k];el('k_p'+(k+1)).value=K.p[k]}
+el('k_ret').value=K.ret;
+}
+function kcalc(){
+var tw=0,te=0;
+for(var k=1;k<=4;k++){
+var w=val('k_m'+k)*val('k_g'+k);
+var e=w*Math.min(100,val('k_p'+k))/100;
+el('k_w'+k).textContent=peso(w);
+el('k_e'+k).textContent=peso(e);
+tw+=w;te+=e;
+}
+var spend=val('k_ret')*4;
+el('k_te').textContent=peso(te);
+el('k_tw').textContent=peso(tw);
+el('k_spend').textContent=peso(spend);
+el('k_be').textContent=tw>0?(spend/tw*100).toFixed(1)+' pts':'n/a';
+el('k_share').textContent=te>0?Math.round(spend/te*100)+'%':'n/a';
+}
+var kids=['k_ret'];
+for(var k=1;k<=4;k++){kids.push('k_r'+k,'k_m'+k,'k_g'+k,'k_p'+k)}
+kload();kcalc();
+kids.forEach(function(i){el(i).addEventListener('input',kcalc)});
+el('k_reset').addEventListener('click',function(){kload();kcalc()});
+
+var D={d_mh:120,d_mr:800,d_legal:350000,d_set:400000,d_days:3,d_ranks:80,d_daily:1100,d_lost:60};
+var dids=Object.keys(D);
+function dload(){dids.forEach(function(i){el(i).value=D[i]})}
+function dcalc(){
+var lines=[
+['Management and HR time',val('d_mh')+' hrs × '+peso(val('d_mr')),val('d_mh')*val('d_mr')],
+['Counsel and filing fees','Direct cost',val('d_legal')],
+['Lost output',val('d_days')+' days × '+val('d_ranks')+' people × '+peso(val('d_daily'))+' × '+val('d_lost')+'% lost',val('d_days')*val('d_ranks')*val('d_daily')*val('d_lost')/100],
+['Settlement, back pay or premium','Paid out',val('d_set')]
+];
+var total=lines.reduce(function(s,l){return s+l[2]},0);
+var max=Math.max.apply(null,lines.map(function(l){return l[2]}))||1;
+var h='';
+lines.forEach(function(l){
+h+='<div class="row"><span>'+l[0]+'</span><b>'+peso(l[2])+'</b><small>'+l[1]+'</small><div class="bars"><i style="width:'+(l[2]/max*100).toFixed(1)+'%"></i></div></div>';
+});
+el('d_lines').innerHTML=h;
+el('d_tot').textContent=peso(total);
+el('d_pp').textContent=val('d_ranks')>0?peso(total/val('d_ranks')):'n/a';
+}
+dload();dcalc();
+dids.forEach(function(i){el(i).addEventListener('input',dcalc)});
+el('d_reset').addEventListener('click',function(){dload();dcalc()});
+})();
+</script>
+<script>
+(function(){
+var el=function(i){return document.getElementById(i)};
+var P=function(n){n=isFinite(n)?n:0;return (n<0?'-':'')+'₱'+Math.round(Math.abs(n)).toLocaleString('en-PH')};
+var PC=function(n,d){n=isFinite(n)?n:0;return n.toFixed(d==null?1:d)+'%'};
+var N1=function(n){n=isFinite(n)?n:0;return n.toLocaleString('en-PH',{maximumFractionDigits:1})};
+var R2=function(n){n=isFinite(n)?n:0;return '₱'+n.toFixed(2)};
+var D=function(a,b){return b>0?a/b:0};
+var CALCS=[
+{id:'hire',h1:'Requisition No. 0001',h2:'Capital request',
+groups:[
+{t:'The seat',f:[
+{k:'val',l:'Value the seat earns or protects a year',u:'P',d:1200000},
+{k:'cost',l:'Loaded monthly cost of the hire',u:'P',d:54000}]},
+{t:'The investment',f:[
+{k:'hire',l:'Hiring cost, fees and time',u:'P',d:120000},
+{k:'ramp',l:'Months to full speed',d:3},
+{k:'rp',l:'Output during ramp, share of full',u:'%',d:50},
+{k:'hur',l:'Longest payback you accept, months',d:12}]}],
+calc:function(v){
+var mv=v.val/12,cum=-v.hire,pay=null,c36=0,rampSum=0;
+for(var m=1;m<=60;m++){
+var c=(m<=v.ramp?mv*v.rp/100:mv)-v.cost;
+if(m<=v.ramp)rampSum+=c;
+cum+=c;
+if(cum>=0&&pay===null)pay=m;
+if(m===36)c36=cum;
+}
+var inside=pay!==null&&pay<=v.hur;
+return {
+lines:[
+{n:'Upfront hiring cost',h:'Fees and manager time',t:P(v.hire)},
+{n:'Net during ramp-up',h:v.ramp+' months at '+v.rp+'% of full output, less loaded cost',t:P(rampSum)},
+{n:'Net per month at full speed',h:'Monthly value less loaded cost',t:P(mv-v.cost)},
+{n:'Payback',h:'First month the running total turns positive',t:pay===null?'beyond 5 years':pay+' months'},
+{n:'Net over 36 months',h:'After all costs',t:P(c36)}],
+s:[{k:'Payback',t:pay===null?'5+ years':pay+' months'},{k:'36-month net',t:P(c36)}],
+res:[{l:'Your hurdle',t:v.hur+' months'},{l:'Verdict',t:inside?'Inside the hurdle: approve':'Outside the hurdle: redesign or freeze',hot:!inside}]};
+}},
+{id:'onb',h1:'Ramp-up cost No. 0001',h2:'Per year',
+groups:[{t:'Your hiring',f:[
+{k:'h',l:'Hires per year',d:30},
+{k:'lc',l:'Loaded monthly cost per hire',u:'P',d:54000},
+{k:'m',l:'Months to productive',d:3},
+{k:'um',l:'Average output missing during ramp',u:'%',d:50},
+{k:'fs',l:'Ramp you can cut with better onboarding',u:'%',d:30}]}],
+calc:function(v){
+var per=v.lc*v.m*v.um/100,ann=per*v.h,sav=ann*v.fs/100;
+return {
+lines:[
+{n:'Ramp cost per hire',h:v.m+' months × '+v.um+'% missing × loaded cost',t:P(per),x:per},
+{n:'Ramp cost per year',h:v.h+' hires',t:P(ann),x:ann},
+{n:'Saved by a faster ramp',h:v.fs+'% shorter',t:P(sav),x:sav}],
+s:[{k:'Ramp cost a year',t:P(ann)},{k:'per hire',t:P(per)}],
+res:[{l:'Recovered if the ramp falls by '+v.fs+'%',t:P(sav),hot:true},{l:'Days saved per hire',t:N1(v.m*30*v.fs/100)+' days'}]};
+}},
+{id:'pay',h1:'Pay position No. 0001',h2:'One grade',
+groups:[
+{t:'The band',f:[
+{k:'mid',l:'Market midpoint for the grade, monthly',u:'P',d:50000},
+{k:'nh',l:'Pay of your latest hire, monthly',u:'P',d:48000},
+{k:'inc',l:'Pay of a 3-year incumbent, monthly',u:'P',d:49000},
+{k:'top',l:'Pay of your top performer, monthly',u:'P',d:51000}]},
+{t:'The fix',f:[
+{k:'cnt',l:'Incumbents in the band',d:25},
+{k:'prem',l:'Premium tenure should hold over a new hire',u:'%',d:8},
+{k:'mp',l:'Months paid a year (with 13th)',d:13},
+{k:'ex',l:'Cost of one exit, share of annual cash pay',u:'%',d:85}]}],
+calc:function(v){
+var cn=D(v.nh,v.mid)*100,ci=D(v.inc,v.mid)*100,ct=D(v.top,v.mid)*100;
+var comp=D(v.nh,v.inc)*100,target=v.nh*(1+v.prem/100),short=Math.max(0,target-v.inc);
+var fix=short*v.mp*v.cnt,exit=v.inc*v.mp*v.ex/100,be=D(fix,exit);
+return {
+lines:[
+{n:'Compa-ratio, latest hire',h:'Pay ÷ band midpoint',t:PC(cn)},
+{n:'Compa-ratio, incumbent',h:'Pay ÷ band midpoint',t:PC(ci)},
+{n:'Compa-ratio, top performer',h:'Pay ÷ band midpoint',t:PC(ct)},
+{n:'Compression index',h:'Latest hire ÷ incumbent. Near 100% means no premium for tenure',t:PC(comp)},
+{n:'Shortfall per incumbent, monthly',h:'Target pay at the premium, less current pay',t:P(short)},
+{n:'Cost to restore the premium',h:v.cnt+' people × '+v.mp+' months',t:P(fix)}],
+s:[{k:'Hire pay ÷ incumbent pay',t:PC(comp)},{k:'Cost to restore',t:P(fix)}],
+res:[{l:'One avoided exit is worth',t:P(exit),hot:true},{l:'Exits to prevent to break even',t:N1(be)},{l:'Reading',t:comp>=95?'Compressed: hires nearly match tenure':'Premium for tenure intact'}]};
+}},
+{id:'perf',h1:'Output per peso No. 0001',h2:'One unit',
+groups:[
+{t:'This year and last',f:[
+{k:'o1',l:'Output value this year (revenue or margin)',u:'P',d:180000000},
+{k:'p1',l:'Loaded payroll this year',u:'P',d:48000000},
+{k:'o0',l:'Output value last year',u:'P',d:165000000},
+{k:'p0',l:'Loaded payroll last year',u:'P',d:46000000},
+{k:'hc',l:'Headcount',d:120}]},
+{t:'Ratings against results',f:[
+{k:'rt',l:'Share rated "exceeds" at appraisal',u:'%',d:45},
+{k:'tg',l:'Share of unit targets actually met',u:'%',d:20},
+{k:'up',l:'Output-per-peso gain you want',u:'%',d:5}]}],
+calc:function(v){
+var a=D(v.o1,v.p1),b=D(v.o0,v.p0),chg=b>0?(a/b-1)*100:0,ph=D(v.o1,v.hc),gap=v.rt-v.tg,extra=v.o1*v.up/100;
+return {
+lines:[
+{n:'Output per peso, this year',h:'Output ÷ loaded payroll',t:R2(a)},
+{n:'Output per peso, last year',h:'Output ÷ loaded payroll',t:R2(b)},
+{n:'Change',h:'This year against last',t:PC(chg)},
+{n:'Output per head',h:'Output ÷ headcount',t:P(ph)},
+{n:'Rating gap',h:'Share rated "exceeds" less share of targets met',t:N1(gap)+' pts'}],
+s:[{k:'Output per ₱ of payroll',t:R2(a)},{k:'Rating gap',t:N1(gap)+' pts'}],
+res:[{l:'Extra output at the same payroll',t:P(extra),hot:true},{l:'Reading',t:gap>15?'Ratings run ahead of results':'Ratings track results',hot:gap>15}]};
+}},
+{id:'bench',h1:'Bench ladder No. 0001',h2:'Critical roles',
+groups:[
+{t:'Critical roles',f:[
+{k:'tot',l:'Critical roles',d:40},
+{k:'rn',l:'With a successor ready now',d:8},
+{k:'r12',l:'Ready within 12 months',d:12},
+{k:'r36',l:'Ready within 36 months',d:10}]},
+{t:'Capability spend',f:[
+{k:'sp',l:'Training and development spend a year',u:'P',d:6000000},
+{k:'aim',l:'Share tied to a top Rock or a named gap',u:'%',d:30}]}],
+calc:function(v){
+var none=v.tot-v.rn-v.r12-v.r36,c0=D(v.rn,v.tot)*100,c12=D(v.rn+v.r12,v.tot)*100,c36=D(v.rn+v.r12+v.r36,v.tot)*100;
+var aimed=v.sp*v.aim/100,un=v.sp-aimed;
+return {
+lines:[
+{n:'Ready now',h:v.rn+' of '+v.tot+' roles',t:PC(c0,0)},
+{n:'Ready within 12 months',h:'Cumulative',t:PC(c12,0)},
+{n:'Ready within 36 months',h:'Cumulative',t:PC(c36,0)},
+{n:'Roles with no successor',h:'Total less all named',t:N1(Math.max(0,none))+' roles'},
+{n:'Spend aimed at a named gap',h:v.aim+'% of spend',t:P(aimed)},
+{n:'Spend with no stated target',h:'The rest',t:P(un)}],
+s:[{k:'Ready-now coverage',t:PC(c0,0)},{k:'Roles with no successor',t:N1(Math.max(0,none))}],
+res:[{l:'Check',t:none<0?'Your counts exceed the number of roles':'Counts reconcile',hot:none<0}]};
+}},
+{id:'ins',h1:'Succession cover No. 0001',h2:'Per year',
+groups:[
+{t:'The risk',f:[
+{k:'roles',l:'Critical roles',d:40},
+{k:'pv',l:'Chance a role falls vacant in a year',u:'%',d:8},
+{k:'mg',l:'Margin at stake per role per month',u:'P',d:250000},
+{k:'m0',l:'Months vacant with no successor',d:6},
+{k:'m1',l:'Months vacant with a ready-now successor',d:1}]},
+{t:'The coverage',f:[
+{k:'c0',l:'Ready-now coverage today',u:'%',d:20},
+{k:'c1',l:'Coverage you want',u:'%',d:70},
+{k:'dv',l:'Development spend per new ready-now successor',u:'P',d:90000}]}],
+calc:function(v){
+var vac=v.roles*v.pv/100;
+var claim=function(c){return vac*((c/100)*v.m1*v.mg+(1-c/100)*v.m0*v.mg)};
+var today=claim(v.c0),target=claim(v.c1),saving=today-target;
+var extra=Math.max(0,v.roles*(v.c1-v.c0)/100),prem=extra*v.dv,net=saving-prem;
+return {
+lines:[
+{n:'Expected vacancies a year',h:v.roles+' roles × '+v.pv+'% chance',t:N1(vac)},
+{n:'Expected claim at today’s coverage',h:v.c0+'% ready now',t:P(today),x:today},
+{n:'Expected claim at target coverage',h:v.c1+'% ready now',t:P(target),x:target},
+{n:'Saving from the higher coverage',h:'Today less target',t:P(saving),x:saving},
+{n:'New ready-now successors needed',h:'Roles × coverage gained',t:N1(extra)},
+{n:'Premium',h:'Successors × development spend',t:P(prem),x:prem}],
+s:[{k:'Claim today, a year',t:P(today)},{k:'Premium to cover',t:P(prem)}],
+res:[{l:'Net of premium in a year',t:P(net),hot:net<0},{l:'Reading',t:net>=0?'The premium pays for itself':'Premium exceeds the saving: stage it'}]};
+}},
+{id:'cult',h1:'Values check No. 0001',h2:'Last quarter',
+groups:[
+{t:'Decisions',f:[
+{k:'dec',l:'Major decisions last quarter',d:40},
+{k:'vd',l:'Decisions a stated value changed or settled',d:6}]},
+{t:'People moves',f:[
+{k:'pr',l:'Promotions last year',d:18},
+{k:'pc',l:'Promotions with values behavior assessed in writing',d:5}]}],
+calc:function(v){
+var r1=D(v.vd,v.dec)*100,r2=D(v.pc,v.pr)*100,low=r1<25;
+return {
+lines:[
+{n:'Value-citation rate',h:v.vd+' of '+v.dec+' decisions',t:PC(r1,0)},
+{n:'Promotion values check',h:v.pc+' of '+v.pr+' promotions',t:PC(r2,0)},
+{n:'Decisions with no value in sight',h:'Decided on cost, speed and habit',t:N1(Math.max(0,v.dec-v.vd))}],
+s:[{k:'Decisions a value touched',t:PC(r1,0)},{k:'Promotions checked',t:PC(r2,0)}],
+res:[{l:'Reading',t:low?'Values on the wall, not yet in the room':'Values are shaping decisions',hot:low}]};
+}},
+{id:'cts',h1:'Cost to serve No. 0001',h2:'Per employee',
+groups:[
+{t:'Shared Services',f:[
+{k:'sc',l:'Shared Services HR cost a year',u:'P',d:18000000},
+{k:'sh',l:'Employees it serves',d:2000},
+{k:'mh',l:'Manager hours a month on HR admin',d:300},
+{k:'mr',l:'Loaded cost per manager hour',u:'P',d:800}]},
+{t:'SBU-embedded HR',f:[
+{k:'ec',l:'Embedded HR cost a year',u:'P',d:6000000},
+{k:'eh',l:'Employees it serves',d:500}]}],
+calc:function(v){
+var sp=D(v.sc,v.sh),ep=D(v.ec,v.eh),mgr=v.mh*v.mr*12,tp=D(v.sc+mgr,v.sh);
+return {
+lines:[
+{n:'Shared Services, per employee',h:'Cost ÷ employees served',t:P(sp)},
+{n:'Embedded HR, per employee',h:'Cost ÷ employees served',t:P(ep)},
+{n:'Manager time on HR admin, a year',h:v.mh+' hrs × '+P(v.mr)+' × 12',t:P(mgr)},
+{n:'True Shared Services cost per employee',h:'Including manager time',t:P(tp)}],
+s:[{k:'Shared, per employee',t:P(sp)},{k:'Embedded, per employee',t:P(ep)}],
+res:[{l:'Manager time hidden in the shared model',t:P(mgr),hot:true},{l:'True shared cost per employee',t:P(tp)}]};
+}},
+{id:'pnl',h1:'People P&L No. 0001',h2:'One SBU',
+groups:[
+{t:'The business',f:[
+{k:'rev',l:'Revenue a year',u:'P',d:1100000000},
+{k:'ps',l:'Total people spend a year',u:'P',d:165000000},
+{k:'hc',l:'Headcount',d:400}]},
+{t:'Numbers from Parts 1 and 3',f:[
+{k:'rx',l:'Regretted exits a year',d:12},
+{k:'cx',l:'Cost of one exit',u:'P',d:500000},
+{k:'lk',l:'Labor cost leakage a year',u:'P',d:12700000},
+{k:'ex',l:'Weighted compliance exposure',u:'P',d:4200000},
+{k:'bc',l:'Ready-now successor coverage',u:'%',d:20}]}],
+calc:function(v){
+var loss=v.rx*v.cx+v.lk+v.ex,own=' · Owner: ________';
+return {
+lines:[
+{n:'1  People spend of revenue',h:'People spend ÷ revenue'+own,t:PC(D(v.ps,v.rev)*100)},
+{n:'2  Revenue per head',h:'Revenue ÷ headcount'+own,t:P(D(v.rev,v.hc))},
+{n:'3  People spend per head',h:'People spend ÷ headcount'+own,t:P(D(v.ps,v.hc))},
+{n:'4  Regretted-exit bill',h:v.rx+' exits × cost of one'+own,t:P(v.rx*v.cx)},
+{n:'5  Leakage of people spend',h:'Leakage ÷ people spend'+own,t:PC(D(v.lk,v.ps)*100)},
+{n:'6  Weighted exposure',h:PC(D(v.ex,v.ps)*100)+' of people spend'+own,t:P(v.ex)},
+{n:'7  Ready-now coverage',h:'Critical roles with a successor'+own,t:PC(v.bc,0)},
+{n:'8  Revenue per peso of people spend',h:'Revenue ÷ people spend'+own,t:R2(D(v.rev,v.ps))}],
+s:[{k:'People spend of revenue',t:PC(D(v.ps,v.rev)*100)},{k:'Revenue per head',t:P(D(v.rev,v.hc))}],
+res:[{l:'Losses you can name: exits, leakage, exposure',t:P(loss),hot:true},{l:'Share of people spend',t:PC(D(loss,v.ps)*100)}]};
+}},
+{id:'auto',h1:'Automation case No. 0001',h2:'HR team',
+groups:[
+{t:'Your HR team',f:[
+{k:'st',l:'HR staff',d:12},
+{k:'hr',l:'Hours a month each on transactional work',d:70},
+{k:'au',l:'Share you can automate or hand off',u:'%',d:50},
+{k:'hc',l:'Loaded cost per HR hour',u:'P',d:450},
+{k:'fh',l:'Productive hours per FTE a year',d:1900}]},
+{t:'The return',f:[
+{k:'fc',l:'HR function cost a year',u:'P',d:6000000},
+{k:'pr',l:'Pesos protected or recovered this year',u:'P',d:9000000}]}],
+calc:function(v){
+var hrs=v.st*v.hr*v.au/100*12,val=hrs*v.hc,fte=D(hrs,v.fh),ret=D(v.pr,v.fc);
+return {
+lines:[
+{n:'Hours returned a year',h:v.st+' people × '+v.hr+' hrs × '+v.au+'% × 12',t:Math.round(hrs).toLocaleString('en-PH')+' hrs'},
+{n:'Value of those hours',h:'Hours × loaded cost per hour',t:P(val)},
+{n:'Full-time equivalent',h:'Hours ÷ productive hours per FTE',t:N1(fte)+' FTE'},
+{n:'HR return per peso of cost',h:'Protected or recovered ÷ function cost',t:R2(ret)}],
+s:[{k:'Hours returned a year',t:Math.round(hrs).toLocaleString('en-PH')},{k:'Return per ₱ of HR cost',t:R2(ret)}],
+res:[{l:'Value of hours returned',t:P(val),hot:true},{l:'Reading',t:ret>=1?'The function returns more than it costs':'Not yet earning its seat',hot:ret<1}]};
+}}
+];
+function fld(cid,f){
+var u=f.u==='P'?'<span class="u">₱</span>':'';
+var r=f.u==='%'?'<span class="u r">%</span>':'';
+return '<div class="fld"><label for="'+cid+'_'+f.k+'">'+f.l+'</label><div class="w">'+u+'<input id="'+cid+'_'+f.k+'" type="number" inputmode="decimal" min="0" step="any">'+r+'</div></div>';
+}
+function mount(c){
+var root=document.querySelector('[data-calc="'+c.id+'"]');
+if(!root)return;
+var h='<div class="inv-h"><span><b>'+c.h1+'</b></span><span>'+c.h2+'</span></div><div class="inv-b">';
+c.groups.forEach(function(g){h+='<fieldset><legend>'+g.t+'</legend><div class="fg">'+g.f.map(function(f){return fld(c.id,f)}).join('')+'</div></fieldset>'});
+h+='<p class="rst">Example figures, not yours. <button type="button" class="rbtn">Reset to the example</button></p><div class="lines"></div><div class="scale res"></div></div>';
+h+='<div class="stick" aria-live="polite"><div><div class="k"></div><div class="v sm"></div></div><div><div class="k" style="text-align:right"></div><div class="p sm"></div></div></div>';
+root.innerHTML=h;
+var keys=[],defs={};
+c.groups.forEach(function(g){g.f.forEach(function(f){keys.push(f.k);defs[f.k]=f.d})});
+function get(k){var x=parseFloat(el(c.id+'_'+k).value);return isFinite(x)&&x>=0?x:0}
+function run(){
+var v={};keys.forEach(function(k){v[k]=get(k)});
+var o=c.calc(v);
+var max=Math.max.apply(null,o.lines.map(function(l){return l.x||0}))||1;
+var lh='';
+o.lines.forEach(function(l){
+lh+='<div class="row"><span>'+l.n+'</span><b>'+l.t+'</b><small>'+l.h+'</small>'+(l.x!=null?'<div class="bars"><i style="width:'+Math.min(100,Math.abs(l.x)/max*100).toFixed(1)+'%"></i></div>':'')+'</div>';
+});
+root.querySelector('.lines').innerHTML=lh;
+var rh='';
+(o.res||[]).forEach(function(r){rh+='<div'+(r.hot?' class="hot"':'')+'><span>'+r.l+'</span><b>'+r.t+'</b></div>'});
+root.querySelector('.res').innerHTML=rh;
+var ks=root.querySelectorAll('.stick .k'),vs=root.querySelectorAll('.stick .v,.stick .p');
+ks[0].textContent=o.s[0].k;vs[0].textContent=o.s[0].t;
+ks[1].textContent=o.s[1].k;vs[1].textContent=o.s[1].t;
+}
+function load(){keys.forEach(function(k){el(c.id+'_'+k).value=defs[k]})}
+load();run();
+keys.forEach(function(k){el(c.id+'_'+k).addEventListener('input',run)});
+root.querySelector('.rbtn').addEventListener('click',function(){load();run()});
+}
+CALCS.forEach(mount);
+})();
+</script>
